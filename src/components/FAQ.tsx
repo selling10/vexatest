@@ -33,30 +33,26 @@ export const FAQ = () => {
   return (
     <section id="faq" className="w-full py-16 sm:py-24 bg-[#EFE3E3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
           Frågor och Svar
         </h2>
 
         <Accordion
           type="single"
           collapsible
-          className="w-full AccordionRoot"
+          className="w-full"
         >
-          {FAQList.map(({ question, answer, value }: FAQProps, index) => (
-            <div key={value}>
-              {index > 0 && <div className="h-px bg-[#454545] my-4" />}
-              <AccordionItem value={value}>
-                <AccordionTrigger className="text-left">
-                  {question}
-                </AccordionTrigger>
-
-                <AccordionContent>{answer}</AccordionContent>
-              </AccordionItem>
-            </div>
+          {FAQList.map(({ question, answer, value }: FAQProps) => (
+            <AccordionItem key={value} value={value}>
+              <AccordionTrigger className="text-left text-black">
+                {question}
+              </AccordionTrigger>
+              <AccordionContent className="text-black">{answer}</AccordionContent>
+            </AccordionItem>
           ))}
         </Accordion>
 
-        <h3 className="font-medium mt-4">
+        <h3 className="font-medium mt-4 text-black">
           Har du fortfarande frågor?{" "}
           <a
             rel="noreferrer noopener"
