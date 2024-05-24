@@ -74,7 +74,7 @@ export const About = () => {
             <div className="flex flex-col justify-between">
               <div className="grid md:grid-cols-2 gap-8">
                 {teamList.map(({ imageUrl, name, position, email, phone, socialNetworks }: TeamProps) => (
-                  <Card key={name} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <Card key={name} className="bg-white rounded-lg shadow-md overflow-hidden border border-white">
                     <CardHeader className="flex flex-col items-center pt-8 pb-4">
                       <img
                         src={imageUrl}
