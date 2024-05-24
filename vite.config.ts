@@ -9,4 +9,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+      },
+      output: {
+        assetFileNames: "assets/[name]-[hash][extname]",
+      },
+    },
+  },
+  assetsInclude: ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.svg"], // Ensure assets are included
 });
