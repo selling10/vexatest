@@ -1,4 +1,3 @@
-import React from 'react';
 import trioImage from "../assets/trio.png"; // Update this path as necessary
 
 const steps = [

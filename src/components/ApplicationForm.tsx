@@ -1,4 +1,3 @@
-import React from 'react';
 import backgroundImage from "../assets/background4.png"; // Update the path as necessary
 
 export const ApplicationForm = () => {

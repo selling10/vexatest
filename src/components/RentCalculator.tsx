@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import backgroundImage from "../assets/background3.png"; // Update this path as necessary
 
 export const RentCalculator = () => {
