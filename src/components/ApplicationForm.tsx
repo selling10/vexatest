@@ -1,4 +1,6 @@
-import backgroundImage from "../assets/background4.png"; 
+import backgroundImage from "../assets/background4.png";
+
+console.log("Resolved Background Image Path:", backgroundImage);  // Add this line for logging
 
 export const ApplicationForm = () => {
   return (
