@@ -51,7 +51,7 @@ export const About = () => {
   const socialIcon = (iconName: string) => {
     switch (iconName) {
       case "Linkedin":
-        return <Linkedin size="20" />;
+        return <Linkedin size="20" className="text-black" />;
       default:
         return null;
     }
@@ -100,6 +100,7 @@ export const About = () => {
                           className={buttonVariants({
                             variant: "ghost",
                             size: "sm",
+                            className: "text-black"
                           })}
                         >
                           <span className="sr-only">{name} icon</span>
