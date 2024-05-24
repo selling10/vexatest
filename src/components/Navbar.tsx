@@ -45,7 +45,7 @@ export const Navbar = () => {
             <a
               rel="noreferrer noopener"
               href="/"
-              className="ml-2 font-bold text-xl flex"
+              className="ml-2 font-bold text-xl flex text-black"
             >
               Tian Fastigheter
             </a>
@@ -65,7 +65,7 @@ export const Navbar = () => {
 
               <SheetContent side={"left"} className="bg-[#EFE3E3] text-black">
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
+                  <SheetTitle className="font-bold text-xl text-black">
                     Tian Fastigheter
                   </SheetTitle>
                 </SheetHeader>
