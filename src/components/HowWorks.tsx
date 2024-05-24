@@ -26,16 +26,16 @@ export const HowWorks = () => {
           <img src={trioImage} alt="Buildings" className="max-w-[300px] w-full h-auto" />
         </div>
         <div className="w-full md:w-2/3 px-4 md:px-0">
-          <h2 className="text-center md:text-left text-2xl md:text-3xl font-bold mb-8">Så funkar det:</h2>
+          <h2 className="text-center md:text-left text-2xl md:text-3xl font-bold mb-8 text-black">Så funkar det:</h2>
           <div className="space-y-8">
             {steps.map((step, index) => (
-              <div key={index} className="flex items-start">
+              <div key={index} className="flex items-start text-black">
                 <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-black rounded-full text-lg font-bold mr-4">
                   {step.number}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">{step.title}</h3>
-                  <p>{step.description}</p>
+                  <h3 className="text-xl font-bold text-black">{step.title}</h3>
+                  <p className="text-black">{step.description}</p>
                 </div>
               </div>
             ))}
