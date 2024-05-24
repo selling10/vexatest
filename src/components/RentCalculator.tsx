@@ -14,7 +14,7 @@ export const RentCalculator = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="relative z-10 bg-white bg-opacity-70 p-8 rounded-lg max-w-3xl mx-auto text-center">
+      <div className="relative z-10 bg-white bg-opacity-70 p-8 rounded-lg max-w-3xl mx-auto text-center text-black">
         <h2 className="text-2xl font-bold mb-4">Räkna ut min hyra</h2>
         <p className="mb-6">Dra reglaget för att få en uppskattning av hur en affär med oss ser ut.</p>
         <div className="mb-6">
@@ -31,7 +31,7 @@ export const RentCalculator = () => {
             className="w-full"
             style={{ accentColor: '#000000' }}
           />
-          <div className="flex justify-between mt-2">
+          <div className="flex justify-between mt-2 text-black">
             <span>12 000 000 kr</span>
             <span>95 000 000 kr</span>
           </div>
