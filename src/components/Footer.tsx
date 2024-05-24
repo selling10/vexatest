@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="bg-[#EFE3E3] py-8">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-black">
           <div className="mb-6 md:mb-0">
             <h1 className="text-lg font-bold">Tian Fastigheter</h1>
             <p>Organisationsnummer: 559044-8337</p>
