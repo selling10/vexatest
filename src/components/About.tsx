@@ -65,7 +65,7 @@ export const About = () => {
             <div className="flex flex-col justify-between">
               <div className="pb-6">
                 <h2 className="text-3xl md:text-4xl font-bold text-black">Om oss</h2>
-                <p className="text-xl mt-4 text-muted-foreground">
+                <p className="text-xl mt-4" style={{ color: "#454545" }}>
                   Sedan vår start 2019 har vi fokuserat på förvaltning av fastigheter och sale-leaseback affärer. Vi har över fem års erfarenhet i fastighetsbranschen och vårt mål är att hjälpa företag att växa genom att frigöra kapital och minska kostnader. Genom att erbjuda skräddarsydda finansiella lösningar ger vi företag möjligheten att fokusera på sin kärnverksamhet.
                 </p>
               </div>
