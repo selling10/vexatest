@@ -1,4 +1,4 @@
-import backgroundImage from "../assets/background4.png"; // Update the path as necessary
+import backgroundImage from "../assets/background4.png"; 
 
 export const ApplicationForm = () => {
   return (
