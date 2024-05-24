@@ -1,168 +1,39 @@
-import { LogoIcon } from "./Icons";
+import { FaFacebook, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 export const Footer = () => {
   return (
-    <footer id="footer">
-      <hr className="w-11/12 mx-auto" />
-
-      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
-        <div className="col-span-full xl:col-span-2">
-          <a
-            rel="noreferrer noopener"
-            href="/"
-            className="font-bold text-xl flex"
-          >
-            <LogoIcon />
-            ShadcnUI/React
-          </a>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Follow US</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Github
-            </a>
+    <footer className="bg-[#EFE3E3] py-8">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+          <div className="mb-6 md:mb-0">
+            <h1 className="text-lg font-bold">Tian Fastigheter</h1>
+            <p>Organisationsnummer: 559044-8337</p>
+            <p>Adress: Grev Turegatan 26, 114 38 Stockholm</p>
           </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitter
-            </a>
+          <div className="mb-6 md:mb-0">
+            <h2 className="font-bold">Kontaktuppgifter</h2>
+            <p>E-post: info@tianfastigheter.se</p>
+            <p>Telefon: +46123456799</p>
           </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Dribbble
+          <div className="flex space-x-4 justify-center md:justify-start">
+            <a href="#" className="text-gray-500 hover:text-gray-700">
+              <FaFacebook size={24} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-gray-700">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-gray-700">
+              <FaYoutube size={24} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-gray-700">
+              <FaInstagram size={24} />
             </a>
           </div>
         </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
-            </a>
-          </div>
+        <div className="mt-8 text-center text-sm text-gray-600">
+          &copy; {new Date().getFullYear()} by Tian Fastigheter. All rights reserved.
         </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Features
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Pricing
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              FAQ
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Youtube
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Discord
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://github.com/leoMirandaa"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
-        </h3>
-      </section>
+      </div>
     </footer>
   );
 };

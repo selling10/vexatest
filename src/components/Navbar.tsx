@@ -11,12 +11,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
 
 interface RouteProps {
   href: string;
@@ -25,16 +21,12 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#features",
-    label: "Features",
+    href: "#how",
+    label: "Så funkar det",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#about",
+    label: "Om oss",
   },
   {
     href: "#faq",
@@ -44,30 +36,25 @@ const routeList: RouteProps[] = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-[#EFE3E3]">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
+        <NavigationMenuList className="container h-20 px-4 w-screen flex justify-between items-center">
           <NavigationMenuItem className="font-bold flex">
             <a
               rel="noreferrer noopener"
               href="/"
               className="ml-2 font-bold text-xl flex"
             >
-              <LogoIcon />
-              ShadcnUI/React
+              Tian Fastigheter
             </a>
           </NavigationMenuItem>
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
-            <Sheet
-              open={isOpen}
-              onOpenChange={setIsOpen}
-            >
-              <SheetTrigger className="px-2">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger className="px-2 focus:outline-none">
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
@@ -76,10 +63,10 @@ export const Navbar = () => {
                 </Menu>
               </SheetTrigger>
 
-              <SheetContent side={"left"}>
+              <SheetContent side={"left"} className="bg-[#EFE3E3] text-black">
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    Tian Fastigheter
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
@@ -89,21 +76,21 @@ export const Navbar = () => {
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={buttonVariants({ variant: "ghost", className: "text-black" })}
                     >
                       {label}
                     </a>
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-                    target="_blank"
+                    href="#apply"
+                    onClick={() => setIsOpen(false)}
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
+                      className: "text-white"
                     })}`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    Ansök nu
                   </a>
                 </nav>
               </SheetContent>
@@ -111,7 +98,7 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-2">
+          <nav className="hidden md:flex gap-6">
             {routeList.map((route: RouteProps, i) => (
               <a
                 rel="noreferrer noopener"
@@ -119,6 +106,7 @@ export const Navbar = () => {
                 key={i}
                 className={`text-[17px] ${buttonVariants({
                   variant: "ghost",
+                  className: "text-black"
                 })}`}
               >
                 {route.label}
@@ -126,18 +114,17 @@ export const Navbar = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex gap-4">
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+              href="#apply"
+              className={`border px-4 py-2 rounded-full ${buttonVariants({
+                variant: "secondary",
+                className: "text-white"
+              })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              Ansök nu
             </a>
-
-            <ModeToggle />
           </div>
         </NavigationMenuList>
       </NavigationMenu>
