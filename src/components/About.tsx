@@ -60,7 +60,7 @@ export const About = () => {
   return (
     <section id="about" className="py-16 sm:py-24 bg-[#EFE3E3] w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-muted/50 rounded-lg py-12 px-6">
+        <div className="bg-white bg-opacity-70 rounded-lg py-12 px-6">
           <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col justify-between">
               <div className="pb-6">
