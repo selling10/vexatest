@@ -1,6 +1,6 @@
 import backgroundImage from "@/assets/background5.png";
 
-console.log("Resolved Background Image Path:", backgroundImage);  // Add this line for logging
+console.log("Resolved Background Image Path:", backgroundImage);
 
 export const ApplicationForm = () => {
   return (
@@ -8,7 +8,7 @@ export const ApplicationForm = () => {
       className="relative flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="absolute inset-0 bg-[#454545] opacity-40"></div>
+      <div className="absolute inset-0 bg-[black] opacity-40"></div>
       <div className="relative container mx-auto my-12 p-4 bg-white bg-opacity-80 rounded-lg shadow-md max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -28,31 +28,31 @@ export const ApplicationForm = () => {
             <form>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Namn</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="Namn" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Namn" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Telefonnummer</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="07XX XXX XXX" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="07XX XXX XXX" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">E-postadress</label>
-                <input type="email" className="w-full px-4 py-2 border rounded-lg" placeholder="Skriv e-postadress" />
+                <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Skriv e-postadress" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Företagets Organisationsnummer</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="Skriv organisationsnummer" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Skriv organisationsnummer" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Fastighetens Adress</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="Skriv adress" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Skriv adress" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Postnummer</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="Skriv postnummer" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Skriv postnummer" />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">Ort</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg" placeholder="Skriv ort" />
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Skriv ort" />
               </div>
               <div className="mb-4">
                 <div className="flex items-center">
