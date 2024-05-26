@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import backgroundImage from "@/assets/background.png";
 
@@ -8,23 +8,45 @@ Modal.setAppElement("#root"); // This is to avoid screen reader issues with Reac
 
 export const ApplicationForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({
+    namn: "",
+    telefonnummer: "",
+    epostadress: "",
+    organisationsnummer: "",
+    adress: "",
+    postnummer: "",
+    ort: "",
+  });
 
-  const openModal = (event) => {
+  const openModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Lock background scrolling
+    document.body.style.overflow = "hidden"; // Lock background scrolling
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto'; // Unlock background scrolling
+    document.body.style.overflow = "auto"; // Unlock background scrolling
   };
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = 'auto'; // Clean up in case of component unmount
+      document.body.style.overflow = "auto"; // Clean up in case of component unmount
     };
   }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const isFormValid = () => {
+    const { namn, telefonnummer, epostadress } = formValues;
+    return namn && telefonnummer && epostadress;
+  };
 
   return (
     <section
@@ -58,31 +80,40 @@ export const ApplicationForm = () => {
             <form>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">
-                  Namn
+                  Namn <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="namn"
+                  value={formValues.namn}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Namn"
                 />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">
-                  Telefonnummer
+                  Telefonnummer <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="telefonnummer"
+                  value={formValues.telefonnummer}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="07XX XXX XXX"
                 />
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">
-                  E-postadress
+                  E-postadress <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="epostadress"
+                  value={formValues.epostadress}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Skriv e-postadress"
                 />
               </div>
@@ -92,7 +123,10 @@ export const ApplicationForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="organisationsnummer"
+                  value={formValues.organisationsnummer}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Skriv organisationsnummer"
                 />
               </div>
@@ -102,7 +136,10 @@ export const ApplicationForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="adress"
+                  value={formValues.adress}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Skriv adress"
                 />
               </div>
@@ -112,7 +149,10 @@ export const ApplicationForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="postnummer"
+                  value={formValues.postnummer}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Skriv postnummer"
                 />
               </div>
@@ -122,7 +162,10 @@ export const ApplicationForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  name="ort"
+                  value={formValues.ort}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
                   placeholder="Skriv ort"
                 />
               </div>
@@ -139,7 +182,12 @@ export const ApplicationForm = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-black text-white py-2 rounded-full font-bold"
+                className={`w-full py-2 rounded-full font-bold ${
+                  isFormValid()
+                    ? "bg-black text-white"
+                    : "bg-gray-400 text-gray-800 cursor-not-allowed"
+                }`}
+                disabled={!isFormValid()}
               >
                 Skicka
               </button>
@@ -164,9 +212,7 @@ export const ApplicationForm = () => {
             integritetspolicy beskriver hur vi samlar in, använder, lagrar och
             skyddar dina personuppgifter när du besöker vår webbplats.
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            1. Insamling av Personuppgifter
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">1. Insamling av Personuppgifter</h3>
           <p className="mb-4">
             Vi kan samla in följande typer av personuppgifter:
             <ul className="list-disc list-inside ml-4">
@@ -175,9 +221,7 @@ export const ApplicationForm = () => {
               <li>Användningsdata: Information om hur du interagerar med vår webbplats, såsom IP-adress, webbläsartyp, och besökta sidor.</li>
             </ul>
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            2. Användning av Personuppgifter
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">2. Användning av Personuppgifter</h3>
           <p className="mb-4">
             Vi använder dina personuppgifter för följande ändamål:
             <ul className="list-disc list-inside ml-4">
@@ -186,9 +230,7 @@ export const ApplicationForm = () => {
               <li>Förbättring av Webbplatsen: För att analysera hur vår webbplats används och förbättra användarupplevelsen.</li>
             </ul>
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            3. Delning av Personuppgifter
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">3. Delning av Personuppgifter</h3>
           <p className="mb-4">
             Vi delar inte dina personuppgifter med tredje part, förutom:
             <ul className="list-disc list-inside ml-4">
@@ -196,15 +238,11 @@ export const ApplicationForm = () => {
               <li>För att uppfylla juridiska krav: Om vi är skyldiga att göra det enligt lag eller juridiska processer.</li>
             </ul>
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            4. Lagring av Personuppgifter
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">4. Lagring av Personuppgifter</h3>
           <p className="mb-4">
             Vi lagrar dina personuppgifter så länge det är nödvändigt för att uppfylla de ändamål som beskrivs i denna integritetspolicy eller så länge som krävs enligt lag. Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, förlust eller förstörelse.
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            5. Dina Rättigheter
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">5. Dina Rättigheter</h3>
           <p className="mb-4">
             Du har rätt att:
             <ul className="list-disc list-inside ml-4">
@@ -214,21 +252,15 @@ export const ApplicationForm = () => {
               <li>Invända mot behandlingen: Invända mot hur vi behandlar dina personuppgifter.</li>
             </ul>
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            6. Cookies
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">6. Cookies</h3>
           <p className="mb-4">
             Vi använder cookies för att förbättra din upplevelse på vår webbplats. Cookies är små textfiler som lagras på din enhet när du besöker vår webbplats. Du kan ställa in din webbläsare att blockera cookies, men detta kan påverka funktionaliteten på vår webbplats.
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            7. Ändringar i denna Integritetspolicy
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">7. Ändringar i denna Integritetspolicy</h3>
           <p className="mb-4">
             Vi kan uppdatera denna integritetspolicy från tid till annan. Vi uppmuntrar dig att regelbundet granska denna sida för de senaste informationen om våra integritetsrutiner.
           </p>
-          <h3 className="text-xl font-semibold mb-2">
-            8. Kontaktinformation
-          </h3>
+          <h3 className="text-xl font-semibold mb-2">8. Kontaktinformation</h3>
           <p className="mb-4">
             Om du har några frågor eller funderingar om denna integritetspolicy eller vår behandling av dina personuppgifter, vänligen kontakta oss:
             <br />
@@ -236,9 +268,9 @@ export const ApplicationForm = () => {
             <br />
             E-post: <a href="mailto:info@tianfastigheter.se" className="text-blue-600">info@tianfastigheter.se</a>
             <br />
-            Telefon: 076-123 45 67
+            Telefon: 07XX XXX XXX
             <br />
-            Adress: Grev Turegatan 26, 114 38 Stockholm
+            Adress: [Din Adress Här]
           </p>
           <button
             onClick={closeModal}
