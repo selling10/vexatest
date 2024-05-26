@@ -15,7 +15,7 @@ export const Hero = () => {
           <h1>Vi köper din fastighet till marknadsvärde</h1>
         </main>
 
-        <p className="text-xl text-white md:w-10/12 mx-auto">
+        <p className="text-2xl text-white md:w-10/12 mx-auto">
           Frigör kapital och fokusera på din verksamhet. Enkelt, tryggt och långsiktigt.
         </p>
 

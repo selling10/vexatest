@@ -20,7 +20,7 @@ const steps = [
 
 export const HowWorks = () => {
   return (
-    <section id="how" className="w-full py-14 md:py-16 bg-[#EFE3E3] flex justify-center">
+    <section id="how" className="w-full py-14 md:py-28 bg-[#EFE3E3] flex justify-center">
       <div className="flex flex-col md:flex-row items-center w-full max-w-5xl">
         <div className="w-full md:w-1/3 flex-shrink-0 mb-8 md:mb-0 md:mr-16 flex justify-center md:justify-start">
           <img src={trioImage} alt="Buildings" className="max-w-[300px] w-full h-auto" />

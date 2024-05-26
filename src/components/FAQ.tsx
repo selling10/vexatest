@@ -40,14 +40,16 @@ export const FAQ = () => {
         <Accordion
           type="single"
           collapsible
-          className="w-full"
+          className="w-full space-y-4" // Added space between questions
         >
           {FAQList.map(({ question, answer, value }: FAQProps) => (
-            <AccordionItem key={value} value={value}>
+            <AccordionItem key={value} value={value} className="mb-4"> {/* Added margin-bottom */}
               <AccordionTrigger className="text-left text-black">
                 {question}
               </AccordionTrigger>
-              <AccordionContent className="text-black">{answer}</AccordionContent>
+              <AccordionContent className="text-gray-600"> {/* Changed text color to gray */}
+                {answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
