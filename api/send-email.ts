@@ -10,25 +10,19 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const { namn, telefonnummer, epostadress, organisationsnummer, adress, postnummer, ort } = req.body;
 
-  const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_SECURE,
-    SMTP_USER,
-    SMTP_PASS,
-    SMTP_FROM,
-    SMTP_TO
-  } = process.env;
-
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_SECURE || !SMTP_USER || !SMTP_PASS || !SMTP_FROM || !SMTP_TO) {
-    res.status(500).json({ message: 'SMTP configuration is incomplete' });
-    return;
-  }
+  // Updated SMTP credentials for Hotmail
+  const SMTP_HOST = 'smtp.office365.com';
+  const SMTP_PORT = 587;
+  const SMTP_SECURE = false;
+  const SMTP_USER = 'kevin.selling@hotmail.com';
+  const SMTP_PASS = 'Bnpr5921';
+  const SMTP_FROM = 'kevin.selling@hotmail.com';
+  const SMTP_TO = 'kevin@utvide.se';
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
-    port: parseInt(SMTP_PORT, 10),
-    secure: SMTP_SECURE === 'true', // true for 465, false for other ports
+    port: SMTP_PORT,
+    secure: SMTP_SECURE, // false for TLS
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
