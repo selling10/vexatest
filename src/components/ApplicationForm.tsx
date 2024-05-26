@@ -17,6 +17,7 @@ export const ApplicationForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [isPolicyChecked, setIsPolicyChecked] = useState(false);
 
   const openModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
@@ -43,9 +44,13 @@ export const ApplicationForm = () => {
     }));
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsPolicyChecked(e.target.checked);
+  };
+
   const isFormValid = () => {
     const { namn, telefonnummer, epostadress } = formValues;
-    return namn && telefonnummer && epostadress;
+    return namn && telefonnummer && epostadress && isPolicyChecked;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -77,11 +82,11 @@ export const ApplicationForm = () => {
         });
         setSubmitMessage("Vi har tagit emot dina uppgifter och återkommer inom kort!");
       } else {
-        setSubmitMessage("Failed to send email. Please try again.");
+        setSubmitMessage("Något gick fel. Vänligen försök igen");
       }
     } catch (error) {
       console.error("Error sending email: ", error);
-      setSubmitMessage("Error sending email. Please try again.");
+      setSubmitMessage("Något gick fel. Vänligen försök igen");
     }
     setIsSubmitting(false);
   };
@@ -209,7 +214,12 @@ export const ApplicationForm = () => {
               </div>
               <div className="mb-4">
                 <div className="flex items-center">
-                  <input type="checkbox" id="policy" className="mr-2" />
+                  <input
+                    type="checkbox"
+                    id="policy"
+                    className="mr-2"
+                    onChange={handleCheckboxChange}
+                  />
                   <label htmlFor="policy" className="text-sm text-black">
                     Jag godkänner{" "}
                     <a href="#" className="text-blue-600" onClick={openModal}>
@@ -218,20 +228,19 @@ export const ApplicationForm = () => {
                   </label>
                 </div>
               </div>
-              {submitMessage ? (
+              <button
+                type="submit"
+                className={`w-full py-2 rounded-full font-bold ${
+                  isFormValid()
+                    ? "bg-black text-white"
+                    : "bg-gray-400 text-gray-800 cursor-not-allowed"
+                }`}
+                disabled={!isFormValid() || isSubmitting}
+              >
+                {isSubmitting ? "Skickar..." : "Skicka"}
+              </button>
+              {submitMessage && (
                 <p className="mt-4 text-center text-black">{submitMessage}</p>
-              ) : (
-                <button
-                  type="submit"
-                  className={`w-full py-2 rounded-full font-bold ${
-                    isFormValid()
-                      ? "bg-black text-white"
-                      : "bg-gray-400 text-gray-800 cursor-not-allowed"
-                  }`}
-                  disabled={!isFormValid() || isSubmitting}
-                >
-                  {isSubmitting ? "Skickar..." : "Skicka"}
-                </button>
               )}
             </form>
           </div>
