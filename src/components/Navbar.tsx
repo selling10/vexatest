@@ -56,7 +56,7 @@ export const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2 focus:outline-none">
                 <Menu
-                  className="flex md:hidden h-5 w-5"
+                  className="flex md:hidden h-5 w-5 text-black" // Updated to make the menu icon black
                   onClick={() => setIsOpen(true)}
                 >
                   <span className="sr-only">Menu Icon</span>
@@ -69,7 +69,7 @@ export const Navbar = () => {
                     Tian Fastigheter
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
+                <nav className="flex flex-col justify-center items-center gap-4 mt-4"> {/* Adjusted gap for more space */}
                   {routeList.map(({ href, label }: RouteProps) => (
                     <a
                       rel="noreferrer noopener"
@@ -85,7 +85,7 @@ export const Navbar = () => {
                     rel="noreferrer noopener"
                     href="#apply"
                     onClick={() => setIsOpen(false)}
-                    className={`w-[110px] border ${buttonVariants({
+                    className={`w-[110px] ${buttonVariants({
                       variant: "secondary",
                       className: "text-white"
                     })}`}
