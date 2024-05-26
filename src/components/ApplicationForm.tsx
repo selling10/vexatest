@@ -53,7 +53,7 @@ export const ApplicationForm = () => {
     setIsSubmitting(true);
     setSubmitMessage("");
     
-    const url = '/api/send-email';
+    const url = '../api/send-email';
     
     try {
       const response = await fetch(url, {
