@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import backgroundImage from "@/assets/background.png";
 
-console.log("Resolved Background Image Path:", backgroundImage);
-
 Modal.setAppElement("#root"); // This is to avoid screen reader issues with React Modal
 
 export const ApplicationForm = () => {
@@ -55,8 +53,7 @@ export const ApplicationForm = () => {
     setIsSubmitting(true);
     setSubmitMessage("");
     
-    // Determine the URL based on the environment
-    const url = process.env.NODE_ENV === 'production' ? '/api/send-email' : 'http://localhost:3000/api/send-email';
+    const url = '/api/send-email';
     
     try {
       const response = await fetch(url, {

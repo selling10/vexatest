@@ -2,9 +2,14 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 export default async (req: VercelRequest, res: VercelResponse) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+    return;
+  }
+
   const { namn, telefonnummer, epostadress, organisationsnummer, adress, postnummer, ort } = req.body;
 
-  // Ensure that all environment variables are defined
   const {
     SMTP_HOST,
     SMTP_PORT,
@@ -20,27 +25,24 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return;
   }
 
-  // Create a transporter object using SMTP transport
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: parseInt(SMTP_PORT, 10),
-    secure: SMTP_SECURE === 'true', // true for 465, false for other ports
+    secure: SMTP_SECURE === 'true',
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
   });
 
-  // Email content
   const mailOptions = {
-    from: SMTP_FROM, // sender address
-    to: SMTP_TO, // list of receivers
-    subject: 'New Application Form Submission', // Subject line
-    text: `Name: ${namn}\nPhone: ${telefonnummer}\nEmail: ${epostadress}\nOrganization Number: ${organisationsnummer}\nAddress: ${adress}\nPostal Code: ${postnummer}\nCity: ${ort}`, // plain text body
+    from: SMTP_FROM,
+    to: SMTP_TO,
+    subject: 'New Application Form Submission',
+    text: `Name: ${namn}\nPhone: ${telefonnummer}\nEmail: ${epostadress}\nOrganization Number: ${organisationsnummer}\nAddress: ${adress}\nPostal Code: ${postnummer}\nCity: ${ort}`,
   };
 
   try {
-    // Send email
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
