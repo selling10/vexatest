@@ -17,6 +17,8 @@ export const ApplicationForm = () => {
     postnummer: "",
     ort: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const openModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
@@ -48,6 +50,30 @@ export const ApplicationForm = () => {
     return namn && telefonnummer && epostadress;
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      if (response.ok) {
+        setSubmitMessage("Email sent successfully!");
+      } else {
+        setSubmitMessage("Failed to send email. Please try again.");
+      }
+    } catch (error) {
+      setSubmitMessage("Error sending email. Please try again.");
+    }
+    setIsSubmitting(false);
+  };
+
   return (
     <section
       id="apply"
@@ -77,7 +103,7 @@ export const ApplicationForm = () => {
             <h3 className="text-2xl font-bold mb-6 text-black">
               Ansök och få ett bud
             </h3>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">
                   Namn <span className="text-red-600">*</span>
@@ -187,10 +213,13 @@ export const ApplicationForm = () => {
                     ? "bg-black text-white"
                     : "bg-gray-400 text-gray-800 cursor-not-allowed"
                 }`}
-                disabled={!isFormValid()}
+                disabled={!isFormValid() || isSubmitting}
               >
-                Skicka
+                {isSubmitting ? "Skickar..." : "Skicka"}
               </button>
+              {submitMessage && (
+                <p className="mt-4 text-center text-black">{submitMessage}</p>
+              )}
             </form>
           </div>
         </div>
@@ -213,39 +242,39 @@ export const ApplicationForm = () => {
             skyddar dina personuppgifter när du besöker vår webbplats.
           </p>
           <h3 className="text-xl font-semibold mb-2">1. Insamling av Personuppgifter</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi kan samla in följande typer av personuppgifter:
-            <ul className="list-disc list-inside ml-4">
+            <ul className="list-disc list-inside ml-4 text-black">
               <li>Kontaktinformation: Namn, e-postadress, telefonnummer och företagsnamn.</li>
               <li>Fastighetsinformation: Fastighetsadress, organisationsnummer och annan relevant information.</li>
               <li>Användningsdata: Information om hur du interagerar med vår webbplats, såsom IP-adress, webbläsartyp, och besökta sidor.</li>
             </ul>
           </p>
           <h3 className="text-xl font-semibold mb-2">2. Användning av Personuppgifter</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi använder dina personuppgifter för följande ändamål:
-            <ul className="list-disc list-inside ml-4">
+            <ul className="list-disc list-inside ml-4 text-black">
               <li>Kommunikation: För att svara på dina förfrågningar och ge dig information om våra tjänster.</li>
               <li>Tjänsteleverans: För att erbjuda och administrera våra tjänster, inklusive att förbereda bud och hyresnivåer.</li>
               <li>Förbättring av Webbplatsen: För att analysera hur vår webbplats används och förbättra användarupplevelsen.</li>
             </ul>
           </p>
           <h3 className="text-xl font-semibold mb-2">3. Delning av Personuppgifter</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi delar inte dina personuppgifter med tredje part, förutom:
-            <ul className="list-disc list-inside ml-4">
+            <ul className="list-disc list-inside ml-4 text-black">
               <li>Med ditt samtycke: Om du har godkänt att vi delar informationen.</li>
               <li>För att uppfylla juridiska krav: Om vi är skyldiga att göra det enligt lag eller juridiska processer.</li>
             </ul>
           </p>
           <h3 className="text-xl font-semibold mb-2">4. Lagring av Personuppgifter</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi lagrar dina personuppgifter så länge det är nödvändigt för att uppfylla de ändamål som beskrivs i denna integritetspolicy eller så länge som krävs enligt lag. Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, förlust eller förstörelse.
           </p>
           <h3 className="text-xl font-semibold mb-2">5. Dina Rättigheter</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Du har rätt att:
-            <ul className="list-disc list-inside ml-4">
+            <ul className="list-disc list-inside ml-4 text-black">
               <li>Få tillgång till dina personuppgifter: Begära en kopia av de personuppgifter vi har om dig.</li>
               <li>Rätta dina personuppgifter: Begära att vi korrigerar felaktiga eller ofullständiga uppgifter.</li>
               <li>Radera dina personuppgifter: Begära att vi raderar dina personuppgifter under vissa omständigheter.</li>
@@ -253,15 +282,15 @@ export const ApplicationForm = () => {
             </ul>
           </p>
           <h3 className="text-xl font-semibold mb-2">6. Cookies</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi använder cookies för att förbättra din upplevelse på vår webbplats. Cookies är små textfiler som lagras på din enhet när du besöker vår webbplats. Du kan ställa in din webbläsare att blockera cookies, men detta kan påverka funktionaliteten på vår webbplats.
           </p>
           <h3 className="text-xl font-semibold mb-2">7. Ändringar i denna Integritetspolicy</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Vi kan uppdatera denna integritetspolicy från tid till annan. Vi uppmuntrar dig att regelbundet granska denna sida för de senaste informationen om våra integritetsrutiner.
           </p>
           <h3 className="text-xl font-semibold mb-2">8. Kontaktinformation</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-black">
             Om du har några frågor eller funderingar om denna integritetspolicy eller vår behandling av dina personuppgifter, vänligen kontakta oss:
             <br />
             <strong>Tian Fastigheter</strong>
