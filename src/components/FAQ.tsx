@@ -43,7 +43,11 @@ export const FAQ = () => {
           className="w-full space-y-4" // Added space between questions
         >
           {FAQList.map(({ question, answer, value }: FAQProps) => (
-            <AccordionItem key={value} value={value} className="mb-4"> {/* Added margin-bottom */}
+            <AccordionItem
+              key={value}
+              value={value}
+              className="mb-4 border-b border-black" // Set border color to black
+            >
               <AccordionTrigger className="text-left text-black">
                 {question}
               </AccordionTrigger>
