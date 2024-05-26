@@ -54,8 +54,12 @@ export const ApplicationForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage("");
+    
+    // Determine the URL based on the environment
+    const url = process.env.NODE_ENV === 'production' ? '/api/send-email' : 'http://localhost:3000/api/send-email';
+    
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
