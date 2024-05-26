@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import backgroundImage from "@/assets/background.png";
 
+
+
 Modal.setAppElement("#root"); // This is to avoid screen reader issues with React Modal
 
 export const ApplicationForm = () => {
@@ -54,7 +56,8 @@ export const ApplicationForm = () => {
     setSubmitMessage("");
     
     const url = '../api/send-email';
-    
+    console.log("API URL: ", url);  // Log the URL to ensure it's correct
+
     try {
       const response = await fetch(url, {
         method: 'POST',
