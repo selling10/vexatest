@@ -11,13 +11,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const { namn, telefonnummer, epostadress, organisationsnummer, adress, postnummer, ort } = req.body;
 
   // Updated SMTP credentials for Hotmail
-  const SMTP_HOST = 'smtp.office365.com';
+  const SMTP_HOST = 'smtp.websupport.se';
   const SMTP_PORT = 587;
   const SMTP_SECURE = false;
-  const SMTP_USER = 'kevin.selling@hotmail.com';
-  const SMTP_PASS = 'Bnpr5921';
-  const SMTP_FROM = 'kevin.selling@hotmail.com';
-  const SMTP_TO = 'kevin@utvide.se';
+  const SMTP_USER = 'kevin@utvide.se';
+  const SMTP_PASS = 'Bnpr59211919+Hogsjo';
+  const SMTP_FROM = 'kevin@utvide.se';
+  const SMTP_TO = 'kevin.selling@hotmail.com';
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,

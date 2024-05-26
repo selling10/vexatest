@@ -55,7 +55,7 @@ export const ApplicationForm = () => {
     setIsSubmitting(true);
     setSubmitMessage("");
     
-    const url = '/api/send-email';
+    const url = '../api/send-email';
     console.log("API URL: ", url);  // Log the URL to ensure it's correct
 
     try {
