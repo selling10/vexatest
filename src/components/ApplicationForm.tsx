@@ -8,7 +8,7 @@ export const ApplicationForm = () => {
       className="relative flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="absolute inset-0 bg-[#454545] opacity-40"></div>
       <div className="relative container mx-auto my-12 p-4 bg-white bg-opacity-80 rounded-lg shadow-md max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
