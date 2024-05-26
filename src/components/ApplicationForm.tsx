@@ -204,7 +204,7 @@ export const ApplicationForm = () => {
         className="fixed inset-0 flex items-center justify-center p-4 z-50"
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-40"
       >
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl mx-auto overflow-y-auto max-h-full">
+        <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl mx-auto overflow-y-auto max-h-full text-black">
           <h2 className="text-2xl font-bold mb-4">Integritetspolicy</h2>
           <p className="mb-4">
             Välkommen till Tian Fastigheter! Vi värnar om din integritet och

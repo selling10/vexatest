@@ -24,7 +24,7 @@ export const RentCalculator = () => {
           </div>
           <input
             type="range"
-            min="1200000"
+            min="12000000"
             max="95000000"
             value={marketValue}
             onChange={(e) => setMarketValue(Number(e.target.value))}
