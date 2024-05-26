@@ -46,13 +46,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     const info = await transporter.sendMail(mailOptions);
     console.log('Email sent: ', info.response);
     res.status(200).json({ message: 'Email sent successfully' });
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error('Error sending email: ', error.message);
-      res.status(500).json({ message: 'Error sending email', error: error.message });
-    } else {
-      console.error('Unknown error: ', error);
-      res.status(500).json({ message: 'An unknown error occurred' });
-    }
+  } catch (err) {
+    const error = err as Error; // Cast the error to Error type
+    console.error('Error sending email: ', error.message);
+    res.status(500).json({ message: 'Error sending email', error: error.message });
   }
 };
