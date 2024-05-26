@@ -56,20 +56,27 @@ export const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2 focus:outline-none">
                 <Menu
-                  className="flex md:hidden h-5 w-5 text-black" // Updated to make the menu icon black
+                  className="flex md:hidden h-5 w-5 text-black" // Ensuring the icon is black
                   onClick={() => setIsOpen(true)}
                 >
                   <span className="sr-only">Menu Icon</span>
                 </Menu>
               </SheetTrigger>
 
-              <SheetContent side={"left"} className="bg-[#EFE3E3] text-black">
-                <SheetHeader>
+              <SheetContent side={"left"} className="bg-[#EFE3E3] text-black focus:outline-none">
+                <SheetHeader className="relative">
                   <SheetTitle className="font-bold text-xl text-black">
                     Tian Fastigheter
                   </SheetTitle>
+                  <button
+                    className="absolute top-4 right-4 focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                    style={{ border: 'none', boxShadow: 'none' }} // Removing any border or outline
+                  >
+                    <span className="sr-only">Close</span>
+                  </button>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-4 mt-4"> {/* Adjusted gap for more space */}
+                <nav className="flex flex-col justify-center items-center gap-4 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
                     <a
                       rel="noreferrer noopener"
