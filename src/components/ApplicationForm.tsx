@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import backgroundImage from "@/assets/background.png";
 
-
-
-Modal.setAppElement("#root"); // This is to avoid screen reader issues with React Modal
+Modal.setAppElement("#root");
 
 export const ApplicationForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,8 +52,8 @@ export const ApplicationForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage("");
-    
-    const url = '../api/send-email';
+
+    const url = '/api/send-email';
     console.log("API URL: ", url);  // Log the URL to ensure it's correct
 
     try {
@@ -68,11 +66,21 @@ export const ApplicationForm = () => {
       });
 
       if (response.ok) {
-        setSubmitMessage("Email sent successfully!");
+        setFormValues({
+          namn: "",
+          telefonnummer: "",
+          epostadress: "",
+          organisationsnummer: "",
+          adress: "",
+          postnummer: "",
+          ort: "",
+        });
+        setSubmitMessage("Vi har tagit emot dina uppgifter och återkommer inom kort!");
       } else {
         setSubmitMessage("Failed to send email. Please try again.");
       }
     } catch (error) {
+      console.error("Error sending email: ", error);
       setSubmitMessage("Error sending email. Please try again.");
     }
     setIsSubmitting(false);
@@ -210,19 +218,20 @@ export const ApplicationForm = () => {
                   </label>
                 </div>
               </div>
-              <button
-                type="submit"
-                className={`w-full py-2 rounded-full font-bold ${
-                  isFormValid()
-                    ? "bg-black text-white"
-                    : "bg-gray-400 text-gray-800 cursor-not-allowed"
-                }`}
-                disabled={!isFormValid() || isSubmitting}
-              >
-                {isSubmitting ? "Skickar..." : "Skicka"}
-              </button>
-              {submitMessage && (
+              {submitMessage ? (
                 <p className="mt-4 text-center text-black">{submitMessage}</p>
+              ) : (
+                <button
+                  type="submit"
+                  className={`w-full py-2 rounded-full font-bold ${
+                    isFormValid()
+                      ? "bg-black text-white"
+                      : "bg-gray-400 text-gray-800 cursor-not-allowed"
+                  }`}
+                  disabled={!isFormValid() || isSubmitting}
+                >
+                  {isSubmitting ? "Skickar..." : "Skicka"}
+                </button>
               )}
             </form>
           </div>
