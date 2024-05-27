@@ -31,10 +31,7 @@ export const RentCalculator = () => {
             className="w-full"
             style={{ accentColor: '#000000' }}
           />
-          <div className="flex justify-between mt-2 text-black">
-            <span>12 000 000 kr</span>
-            <span>95 000 000 kr</span>
-          </div>
+     
         </div>
         <div className="mb-6">
           <label className="block text-left font-semibold mb-2">Estimerad Månadshyra (exkl. moms):</label>
