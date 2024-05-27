@@ -7,6 +7,7 @@ import { RentCalculator } from "./components/RentCalculator";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ApplicationForm } from "./components/ApplicationForm";
 import { HowWorks } from "./components/HowWorks";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <SpeedInsights/>
       <HowWorks />
       <RentCalculator />
       <About />
