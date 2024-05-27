@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import backgroundImage from "../assets/stockholm.png"; // Update this path as necessary
+import backgroundImage from "../assets/gävle.png"; // Update this path as necessary
 
 export const RentCalculator = () => {
   const [marketValue, setMarketValue] = useState(15000000); // initial market value

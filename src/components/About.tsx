@@ -72,7 +72,7 @@ export const About = () => {
               <Statistics />
             </div>
             <div className="flex flex-col justify-between">
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {teamList.map(({ imageUrl, name, position, email, phone, socialNetworks }: TeamProps) => (
                   <Card key={name} className="bg-white rounded-lg shadow-md overflow-hidden border border-white">
                     <CardHeader className="flex flex-col items-center pt-8 pb-4">
@@ -100,7 +100,7 @@ export const About = () => {
                           className={buttonVariants({
                             variant: "ghost",
                             size: "sm",
-                            className: "text-black"
+                            className: "text-black hover:bg-white hover:bg-opacity-80 hover:invert"
                           })}
                         >
                           <span className="sr-only">{name} icon</span>
