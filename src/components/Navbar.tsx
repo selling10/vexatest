@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/sheet";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
+import icon3 from '../assets/icon.png'
+
 
 interface RouteProps {
   href: string;
@@ -45,8 +47,10 @@ export const Navbar = () => {
             <a
               rel="noreferrer noopener"
               href="/"
-              className="ml-2 font-bold text-xl flex text-black"
+              className="ml-0 font-bold text-xl flex text-black items-center"
             >
+                            <img src={icon3} alt="Icon" className="ml-0 h-12 w-12" /> {/* Adjust size as needed */}
+
               Tian Fastigheter
             </a>
           </NavigationMenuItem>
@@ -56,7 +60,7 @@ export const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2 focus:outline-none">
                 <Menu
-                  className="flex md:hidden h-5 w-5 text-black" // Ensuring the icon is black
+                  className="flex md:hidden h-5 w-5 text-black"
                   onClick={() => setIsOpen(true)}
                 >
                   <span className="sr-only">Menu Icon</span>
@@ -71,7 +75,7 @@ export const Navbar = () => {
                   <button
                     className="absolute top-4 right-4 focus:outline-none"
                     onClick={() => setIsOpen(false)}
-                    style={{ border: 'none', boxShadow: 'none' }} // Removing any border or outline
+                    style={{ border: 'none', boxShadow: 'none' }}
                   >
                     <span className="sr-only">Close</span>
                   </button>
