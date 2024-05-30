@@ -13,18 +13,18 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Exempelfråga 1",
-    answer: "Exempelsvar 1",
+    question: "Vilka är fördelarna med att sale-leaseback?",
+    answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta använda fastigheten utan störningar i verksamheten.",
     value: "item-1",
   },
   {
-    question: "Exempelfråga 2",
-    answer: "Exempelsvar 2",
+    question: "Hur går köpprocessen till?",
+    answer: "Processen börjar med en initial konsultation där vi diskuterar era behov och fastighetens detaljer. Efter en värdering och due diligence förhandlar vi fram ett avtal. När köpet är slutfört, skriver vi ett leasingavtal där ni fortsätter att använda fastigheten.",
     value: "item-2",
   },
   {
-    question: "Exempelfråga 3",
-    answer: "Bruh",
+    question: "Kan leasingavtalet förlängas?",
+    answer: "Ja, vi erbjuder möjligheten att förlänga leasingavtalet efter den initiala leasingperioden. Villkor för förlängning förhandlas i god tid före den ursprungliga periodens slut.",
     value: "item-3",
   },
 ];
