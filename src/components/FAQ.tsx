@@ -13,19 +13,29 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Vilka är fördelarna med att sale-leaseback?",
+    question: "Vad är fördelarna med att sälja och hyra tillbaka min fastighet?",
     answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta använda fastigheten utan störningar i verksamheten.",
     value: "item-1",
   },
   {
     question: "Hur går köpprocessen till?",
-    answer: "Processen börjar med en initial konsultation där vi diskuterar era behov och fastighetens detaljer. Efter en värdering och due diligence förhandlar vi fram ett avtal. När köpet är slutfört, skriver vi ett leasingavtal där ni fortsätter att använda fastigheten.",
+    answer: "Processen börjar med att vi bokar in ett möte över en kaffe, där vi pratar igenom era behov och fastighetens detaljer. Därefter gör vi en värdering och går igenom fastigheten tillsammans. När vi är överens, skriver vi ett hyresavtal så att ni kan fortsätta använda fastigheten precis som vanligt. Vi ser till att hela processen går smidigt och enkelt, och finns med er hela vägen.",
     value: "item-2",
   },
   {
-    question: "Kan leasingavtalet förlängas?",
-    answer: "Ja, vi erbjuder möjligheten att förlänga leasingavtalet efter den initiala leasingperioden. Villkor för förlängning förhandlas i god tid före den ursprungliga periodens slut.",
+    question: "Kan hyresavtalet förlängas?",
+    answer: "Ja, vi erbjuder möjligheten att förlänga hyresavtal efter den initiala hyresperioden. Villkor för förlängning förhandlas i god tid före den ursprungliga periodens slut.",
     value: "item-3",
+  },
+  {
+    question: "Hur lång tid tar hela processen från start till slut?",
+    answer: "Tidsramen kan variera beroende på fastighetens komplexitet och era specifika behov, men vanligtvis tar hela processen från första mötet till slutförd affär några månader.",
+    value: "item-4",
+  },
+  {
+    question: "Hur påverkar detta vårt företags ekonomi?",
+    answer: "Genom att frigöra kapital som är bundet i fastigheter, kan ni investera dessa medel i verksamhetens tillväxt. Detta kan förbättra likviditeten och ge er större ekonomisk flexibilitet.",
+    value: "item-5",
   },
 ];
 

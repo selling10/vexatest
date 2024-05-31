@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import backgroundImage from "@/assets/background5.png";
+import backgroundImage from "@/assets/kastet2.jpg";
 
 Modal.setAppElement("#root");
 
@@ -101,24 +101,23 @@ export const ApplicationForm = () => {
       <div className="relative container mx-auto my-12 p-4 bg-white bg-opacity-80 rounded-lg shadow-md max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2 className="text-3xl font-bold mb-4 mt-5 text-black">
-              Vi köper din fastighet till marknadsvärde
-            </h2>
-            <p className="mb-4 text-black">
-              Genom att sälja er lokal och leasa tillbaka den, kan ni fortsätta
-              frigöra kapital och fokusera på att utveckla er verksamhet.
-            </p>
-            <p className="mb-4 text-black">
-              Fyll i era uppgifter så återkommer vi med ett preliminärt förslag
-              på bud och hyresnivå.
-            </p>
-            <p className="font-semibold text-black">
-              Gäller för närvarande endast kommersiella lokaler.
-            </p>
+          <h2 className="text-3xl font-bold mb-4 mt-5 text-black">
+            Vi köper din fastighet till marknadsvärde
+          </h2>
+          <p className="mb-4 text-black">
+            För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå. 
+          </p>
+          <p className="mb-4 text-black">
+          För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med en minimum storlek på 500 kvm.
+          </p>
+          
+
+
+
           </div>
           <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
             <h3 className="text-2xl font-bold mb-6 text-black">
-              Ansök och få ett bud
+              Ansök nu
             </h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">

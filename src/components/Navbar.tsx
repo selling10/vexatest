@@ -13,8 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
-import icon3 from '../assets/icon.png'
-
+import icon3 from '../assets/icon.png';
 
 interface RouteProps {
   href: string;
@@ -45,13 +44,11 @@ export const Navbar = () => {
         <NavigationMenuList className="container h-20 px-4 w-screen flex justify-between items-center">
           <NavigationMenuItem className="font-bold flex">
             <a
-              rel="noreferrer noopener"
               href="/"
-              className="ml-0 font-bold text-xl flex text-black items-center"
+              className="ml-0 text-xl flex text-black items-center"
             >
-                            <img src={icon3} alt="Icon" className="ml-0 h-12 w-12" /> {/* Adjust size as needed */}
-
-              Tian Fastigheter
+              <img src={icon3} alt="Icon" className="h-12 w-12" /> {/* Adjust size as needed */}
+              Tian Industrifastigheter
             </a>
           </NavigationMenuItem>
 
@@ -109,7 +106,7 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-6">
+          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '12%' }}>
             {routeList.map((route: RouteProps, i) => (
               <a
                 rel="noreferrer noopener"

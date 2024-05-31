@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import backgroundImage from "../assets/stockholm.png"; // Update this path as necessary
+import backgroundImage from "../assets/kastet.jpg"; // Update this path as necessary
 
 export const RentCalculator = () => {
   const [marketValue, setMarketValue] = useState(15000000); // initial market value
@@ -24,14 +24,12 @@ export const RentCalculator = () => {
           </div>
           <input
             type="range"
-            min="12000000"
-            max="95000000"
+            min="5000000"
+            max="25000000"
             value={marketValue}
             onChange={(e) => setMarketValue(Number(e.target.value))}
-            className="w-full"
-            style={{ accentColor: '#000000' }}
+            className="w-full range-input"
           />
-     
         </div>
         <div className="mb-6">
           <label className="block text-left font-semibold mb-2">Estimerad Månadshyra (exkl. moms):</label>
@@ -40,9 +38,11 @@ export const RentCalculator = () => {
         <button className="px-6 py-2 bg-black text-white rounded-full font-bold">Ansök nu</button>
         <p className="mt-4 text-sm text-[#454545]">
           Observera att detta är en uppskattning och den faktiska hyran kan variera beroende på flera faktorer. <br />
-          Kontakta oss för en exakt offert. 
+          Kontakta oss för en exakt offert.
         </p>
       </div>
     </section>
   );
 };
+
+// Add the following CSS styles to your stylesheet

@@ -9,11 +9,11 @@ const steps = [
   {
     number: "2",
     title: "Du hyr tillbaka fastigheten",
-    description: "Du hyr tillbaka fastigheten av oss med en årlig hyra som motsvarar 10% av marknadsvärdet.",
+    description: "Du hyr tillbaka fastigheten av oss med en årlig hyra som normalt motsvarar 10% av marknadsvärdet.",
   },
   {
     number: "3",
-    title: "Långsiktigt avtal",
+    title: "Långsiktigt hyresavtal",
     description: "Vi erbjuder ett 10 årigt avtal vilket ger stabilitet och förutsägbarhet för ditt företag.",
   },
 ];
