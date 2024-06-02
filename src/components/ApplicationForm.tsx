@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import backgroundImage from "@/assets/kastet2.jpg";
+import backgroundImage from "@/assets/gjuteriet2.jpg";
 
 Modal.setAppElement("#root");
 

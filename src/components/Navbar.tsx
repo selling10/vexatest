@@ -48,7 +48,7 @@ export const Navbar = () => {
               className="ml-0 text-xl flex text-black items-center"
             >
               <img src={icon3} alt="Icon" className="h-12 w-12" /> {/* Adjust size as needed */}
-              Tian Industrifastigheter
+              hyrfabriken
             </a>
           </NavigationMenuItem>
 
@@ -106,7 +106,7 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '12%' }}>
+          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '7%' }}>
             {routeList.map((route: RouteProps, i) => (
               <a
                 rel="noreferrer noopener"

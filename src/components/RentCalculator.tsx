@@ -35,7 +35,7 @@ export const RentCalculator = () => {
           <label className="block text-left font-semibold mb-2">Estimerad Månadshyra (exkl. moms):</label>
           <div className="text-2xl font-bold">{roundedMonthlyRent.toLocaleString()} kr</div>
         </div>
-        <button className="px-6 py-2 bg-black text-white rounded-full font-bold">Ansök nu</button>
+        <a href="#apply" className="px-6 py-2 bg-black text-white rounded-full font-bold">Ansök nu</a>
         <p className="mt-4 text-sm text-[#454545]">
           Observera att detta är en uppskattning och den faktiska hyran kan variera beroende på flera faktorer. <br />
           Kontakta oss för en exakt offert.

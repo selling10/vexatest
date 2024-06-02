@@ -72,7 +72,7 @@ export const FAQ = () => {
           Har du fortfarande frågor?{" "}
           <a
             rel="noreferrer noopener"
-            href="#about"
+            href="#apply"
             className="text-gray-600 underline"
           >
             Kontakta oss
