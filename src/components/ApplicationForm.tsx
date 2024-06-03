@@ -105,7 +105,7 @@ export const ApplicationForm = () => {
           Vi köper din fastighet till marknadsvärde
           </h2>
           <p className="mb-4 text-black">
-          För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå. För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med minsta yta om 500 kvm.”          </p>
+          För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå.</p>
           <p className="mb-4 text-black">
           För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med en minimum storlek på 500 kvm.
           </p>
