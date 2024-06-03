@@ -14,12 +14,12 @@ interface FAQProps {
 const FAQList: FAQProps[] = [
   {
     question: "Vad är fördelarna med att sälja och hyra tillbaka min fastighet?",
-    answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta använda fastigheten utan störningar i verksamheten.",
+    answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta satsa på er kärnverksamhet.",
     value: "item-1",
   },
   {
     question: "Hur går köpprocessen till?",
-    answer: "Processen börjar med att vi bokar in ett möte över en kaffe, där vi pratar igenom era behov och fastighetens detaljer. Därefter gör vi en värdering och går igenom fastigheten tillsammans. När vi är överens, skriver vi ett hyresavtal så att ni kan fortsätta använda fastigheten precis som vanligt. Vi ser till att hela processen går smidigt och enkelt, och finns med er hela vägen.",
+    answer: "Processen börjar med att vi bokar in ett möte över en kaffe, där vi kommer ut till er och pratar igenom era behov och fastighetens förutsättningar. Därefter gör vi en värdering och finansiell kontroll av er som blivande hyresgäst. När vi är överens, skriver vi ett hyresavtal så att ni kan fortsätta använda fastigheten precis som vanligt. Vi ser till att hela processen går smidigt och enkelt, och finns med er hela vägen.",
     value: "item-2",
   },
   {
@@ -29,12 +29,12 @@ const FAQList: FAQProps[] = [
   },
   {
     question: "Hur lång tid tar hela processen från start till slut?",
-    answer: "Tidsramen kan variera beroende på fastighetens komplexitet och era specifika behov, men vanligtvis tar hela processen från första mötet till slutförd affär några månader.",
+    answer: "Tidsramen kan variera beroende på fastighetens förutsättningar och era specifika behov, men vanligtvis tar hela processen från första mötet till utbetalda pengar ca 3-8 veckor.”",
     value: "item-4",
   },
   {
     question: "Hur påverkar detta vårt företags ekonomi?",
-    answer: "Genom att frigöra kapital som är bundet i fastigheter, kan ni investera dessa medel i verksamhetens tillväxt. Detta kan förbättra likviditeten och ge er större ekonomisk flexibilitet.",
+    answer: "Genom att frigöra kapitalet bundet i er fastighet kan ni investera dessa medel i verksamhetens tillväxt. Detta förbättrar likviditeten och ge er större ekonomisk flexibilitet.",
     value: "item-5",
   },
 ];

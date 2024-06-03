@@ -102,11 +102,10 @@ export const ApplicationForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
           <h2 className="text-3xl font-bold mb-4 mt-5 text-black">
-            Vi köper din fastighet till marknadsvärde
+          Vi köper din fastighet till marknadsvärde
           </h2>
           <p className="mb-4 text-black">
-            För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå. 
-          </p>
+          För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå. För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med minsta yta om 500 kvm.”          </p>
           <p className="mb-4 text-black">
           För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med en minimum storlek på 500 kvm.
           </p>

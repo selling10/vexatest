@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
-import icon3 from '../assets/icon.png';
+import icon3 from '../assets/vexa.png';
 
 interface RouteProps {
   href: string;
@@ -47,8 +47,7 @@ export const Navbar = () => {
               href="/"
               className="ml-0 text-xl flex text-black items-center"
             >
-              <img src={icon3} alt="Icon" className="h-8 w-8 mr-1" /> {/* Adjust size as needed */}
-              Vexa Industrihus
+              <img src={icon3} alt="Icon" className="h-10  mr-1" /> {/* Adjust size as needed */}
             </a>
           </NavigationMenuItem>
 
@@ -106,7 +105,7 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '7%' }}>
+          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '0%' }}>
             {routeList.map((route: RouteProps, i) => (
               <a
                 rel="noreferrer noopener"
