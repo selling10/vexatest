@@ -316,11 +316,11 @@ export const ApplicationForm = () => {
             <br />
             <strong>Tian Fastigheter</strong>
             <br />
-            E-post: <a href="mailto:info@tianfastigheter.se" className="text-blue-600">info@tianfastigheter.se</a>
+            E-post: <a href="mailto:info@vexaindutrihus.se" className="text-blue-600">info@industrihus.se</a>
             <br />
-            Telefon: 07XX XXX XXX
+            Telefon: +46(0)76 - 838 30 99
             <br />
-            Adress: [Din Adress Här]
+            Adress: Grev Turegatan 26, 114 38 Stockholm
           </p>
           <button
             onClick={closeModal}

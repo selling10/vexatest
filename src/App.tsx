@@ -18,7 +18,7 @@ function App() {
       <RentCalculator />
       <About />
       <FAQ/>
-       <ApplicationForm/>
+      <ApplicationForm/>
       <Footer />
       <ScrollToTop />
     </>

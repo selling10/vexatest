@@ -47,8 +47,8 @@ export const Navbar = () => {
               href="/"
               className="ml-0 text-xl flex text-black items-center"
             >
-              <img src={icon3} alt="Icon" className="h-12 w-12" /> {/* Adjust size as needed */}
-              hyrfabriken
+              <img src={icon3} alt="Icon" className="h-8 w-8 mr-1" /> {/* Adjust size as needed */}
+              Vexa Industrihus
             </a>
           </NavigationMenuItem>
 
