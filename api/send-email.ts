@@ -15,7 +15,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const SMTP_PORT = 587;
   const SMTP_SECURE = false;
   const SMTP_USER = 'kevin@utvide.se';
-  const SMTP_PASS = 'Bnpr59211919+Hogsjo';
+  const SMTP_PASS = 'Bnpr59211919+';
   const SMTP_FROM = 'kevin@utvide.se';
   const SMTP_TO = 'kevin.selling@hotmail.com';
 
