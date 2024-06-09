@@ -17,7 +17,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const SMTP_USER = 'kevin@utvide.se';
   const SMTP_PASS = 'Bnpr59211919+';
   const SMTP_FROM = 'kevin@utvide.se';
-  const SMTP_TO = 'kevin.selling@hotmail.com';
+  const SMTP_TO = 'info@vexaindustrihus.se';
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
@@ -32,7 +32,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const mailOptions = {
     from: SMTP_FROM,
     to: SMTP_TO,
-    subject: 'New Application Form Submission',
+    subject: 'Ny ansökan Vexa Industrihus',
     text: `Name: ${namn}\nPhone: ${telefonnummer}\nEmail: ${epostadress}\nOrganization Number: ${organisationsnummer}\nAddress: ${adress}\nPostal Code: ${postnummer}\nCity: ${ort}`,
   };
 
