@@ -66,7 +66,7 @@ export const Navbar = () => {
               <SheetContent side={"left"} className="bg-[#EFE3E3] text-black focus:outline-none">
                 <SheetHeader className="relative">
                   <SheetTitle className="font-bold text-xl text-black">
-                    Tian Fastigheter
+                    Vexa Industrihus
                   </SheetTitle>
                   <button
                     className="absolute top-4 right-4 focus:outline-none"
