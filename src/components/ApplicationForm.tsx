@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import backgroundImage from "@/assets/gjuteriet3.png";
+import backgroundImage from "@/assets/gjuteriet4.png";
 
 export const ApplicationForm = () => {
   const [formValues, setFormValues] = useState({

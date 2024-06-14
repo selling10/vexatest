@@ -8,7 +8,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return;
   }
 
-  const { namn, telefonnummer, epostadress, organisationsnummer, adress, postnummer, ort } = req.body;
+  const { namn, telefonnummer, epostadress, företagsnamn, adress, postnummer, ort } = req.body;
 
   // Updated SMTP credentials for Hotmail
   const SMTP_HOST = 'smtp.websupport.se';
@@ -33,7 +33,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     from: SMTP_FROM,
     to: SMTP_TO,
     subject: 'Ny ansökan Vexa Industrihus',
-    text: `Name: ${namn}\nPhone: ${telefonnummer}\nEmail: ${epostadress}\nOrganization Number: ${organisationsnummer}\nAddress: ${adress}\nPostal Code: ${postnummer}\nCity: ${ort}`,
+    text: `Name: ${namn}\nPhone: ${telefonnummer}\nEmail: ${epostadress}\nCompany Name: ${företagsnamn}\nAddress: ${adress}\nPostal Code: ${postnummer}\nCity: ${ort}`,
   };
 
   try {

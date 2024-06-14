@@ -47,6 +47,7 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0px 20px",
+          flexWrap: "wrap",
         }}
         buttonStyle={{
           background: "#EFE3E3",
@@ -54,14 +55,15 @@ function App() {
           fontSize: "14px",
           fontWeight: "bold",
           padding: "10px 20px",
-          borderRadius: "5px"
+          borderRadius: "5px",
+          margin: "10px auto",
         }}
         expires={150}
       >
-        <span style={{ fontSize: "14px", marginRight: "10px", fontWeight: "bold" }}>
+        <span style={{ fontSize: "14px", marginRight: "10px", fontWeight: "bold", flex: "1 1 100%" }}>
           Denna webbplats använder cookies för att förbättra din upplevelse.
         </span>
-        <a href="/privacy-policy" style={{ color: "#EFE3E3", textDecoration: "underline" }}>
+        <a href="/privacy-policy" style={{ color: "#EFE3E3", textDecoration: "underline", flex: "1 1 100%", textAlign: "center" }}>
           Läs mer
         </a>
       </CookieConsent>
