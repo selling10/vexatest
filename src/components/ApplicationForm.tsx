@@ -100,7 +100,7 @@ export const ApplicationForm = () => {
               Kontakta oss för mer information:
             </p>
             <p className="mb-4 text-black">
-              E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vaxaindustrihus.se</a><br />
+              E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vexaindustrihus.se</a><br />
               Telefon: +46 (0) 79 - 307 80 20
             </p>
           </div>
