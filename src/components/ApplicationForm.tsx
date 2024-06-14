@@ -100,7 +100,7 @@ export const ApplicationForm = () => {
               Kontakta oss för mer information:
             </p>
             <p className="mb-4 text-black">
-              E-post: <a href="mailto:info@vaxaindustrihus.se" className="text-blue-600">info@vaxaindustrihus.se</a><br />
+              E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vaxaindustrihus.se</a><br />
               Telefon: +46 (0) 79 - 307 80 20
             </p>
           </div>
@@ -137,7 +137,7 @@ export const ApplicationForm = () => {
               </div>
               <div className="mb-4">
                 <label className="block text-left font-semibold mb-2 text-black">
-                  E-postadress <span className="text-red-600">*</span>
+                  E-post <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
