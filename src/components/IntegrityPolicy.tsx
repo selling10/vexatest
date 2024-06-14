@@ -165,9 +165,9 @@ const PrivacyPolicy: React.FC = () => {
         <br />
         Sverige
         <br />
-        Webbplats: <a href="https://vexaindustrihus.se" className="text-blue-600">https://vaxaindustrihus.se</a>
+        Webbplats: <a href="https://vexaindustrihus.se" className="text-blue-600">https://vexaindustrihus.se</a>
         <br />
-        E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vaxaindustrihus.se</a>
+        E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vexaindustrihus.se</a>
         <br />
         Telefonnummer: +46 (0) 79 -307 80 20
       </p>
