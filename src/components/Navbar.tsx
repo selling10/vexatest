@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -31,12 +32,29 @@ const routeList: RouteProps[] = [
   },
   {
     href: "#faq",
-    label: "FAQ",
+    label: "Vanliga frågor",
+  },
+  {
+    href: "#apply",
+    label: "Kontakt", // New "Kontakt" route
   },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleNavigation = (href: string) => {
+    if (window.location.pathname !== "/") {
+      navigate("/");
+    }
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#EFE3E3]">
@@ -82,7 +100,11 @@ export const Navbar = () => {
                       rel="noreferrer noopener"
                       key={label}
                       href={href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        handleNavigation(href);
+                      }}
                       className={buttonVariants({ variant: "ghost", className: "text-black" })}
                     >
                       {label}
@@ -91,7 +113,11 @@ export const Navbar = () => {
                   <a
                     rel="noreferrer noopener"
                     href="#apply"
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      handleNavigation("#apply");
+                    }}
                     className={`w-[110px] ${buttonVariants({
                       variant: "secondary",
                       className: "text-white"
@@ -111,6 +137,10 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 href={route.href}
                 key={i}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigation(route.href);
+                }}
                 className={`text-[17px] ${buttonVariants({
                   variant: "ghost",
                   className: "text-black"
@@ -125,6 +155,10 @@ export const Navbar = () => {
             <a
               rel="noreferrer noopener"
               href="#apply"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation("#apply");
+              }}
               className={`border px-4 py-2 rounded-full ${buttonVariants({
                 variant: "secondary",
                 className: "text-white"

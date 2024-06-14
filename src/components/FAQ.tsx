@@ -13,8 +13,8 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Vad är fördelarna med att sälja och hyra tillbaka min fastighet?",
-    answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta satsa på er kärnverksamhet.",
+    question: "Vad är fördelarna med att sälja och hyra tillbaka företagets fastighet?",
+    answer: "Fördelarna inkluderar frigörande av kapital, förbättrad balansräkning, och möjligheten att fortsätta satsa på er kärnverksamhet utan nya banklån.",
     value: "item-1",
   },
   {
@@ -29,12 +29,12 @@ const FAQList: FAQProps[] = [
   },
   {
     question: "Hur lång tid tar hela processen från start till slut?",
-    answer: "Tidsramen kan variera beroende på fastighetens förutsättningar och era specifika behov, men vanligtvis tar hela processen från första mötet till utbetalda pengar ca 3-8 veckor.”",
+    answer: "Tidsramen kan variera beroende på fastighetens förutsättningar och era specifika behov, men vanligtvis tar hela processen från första mötet till utbetalda pengar ca 3-8 veckor.",
     value: "item-4",
   },
   {
-    question: "Hur påverkar detta vårt företags ekonomi?",
-    answer: "Genom att frigöra kapitalet bundet i er fastighet kan ni investera dessa medel i verksamhetens tillväxt. Detta förbättrar likviditeten och ge er större ekonomisk flexibilitet.",
+    question: "Hur påverkar detta ekonomin i mitt företag?",
+    answer: "När ni frigör kapitalet bundet i er fastighet kan ni investera dessa medel i verksamhetens tillväxt. Detta förbättrar likviditeten och ge er större ekonomisk flexibilitet. Genom att sälja fastigheten till dess fulla marknadsvärde, stärks bolagets balansräkning och nyckeltal.",
     value: "item-5",
   },
 ];

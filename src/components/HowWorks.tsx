@@ -9,19 +9,19 @@ const steps = [
   {
     number: "2",
     title: "Du hyr tillbaka fastigheten",
-    description: "Du hyr tillbaka fastigheten av oss med en årlig hyra som normalt motsvarar 10% av marknadsvärdet.",
+    description: "Du hyr tillbaka fastigheten av oss med en årlig hyra som normalt motsvarar 8-10% av marknadsvärdet.",
   },
   {
     number: "3",
     title: "Långsiktigt hyresavtal",
-    description: "Vi erbjuder ett 10 årigt avtal vilket ger stabilitet och förutsägbarhet för ditt företag.",
+    description: "Vi erbjuder alltid ett hyresavtal om minst 10 år, vilket ger stabilitet och förutsägbarhet för ditt företag.",
   },
 ];
 
 export const HowWorks = () => {
   return (
     <section id="how" className="w-full py-14 md:py-28 bg-[#EFE3E3] flex justify-center">
-      <div className="flex flex-col md:flex-row items-center w-full max-w-5xl">
+      <div className="flex flex-col md:flex-row items-center w-full max-w-4xl">
         <div className="w-full md:w-1/3 flex-shrink-0 mb-8 md:mb-0 md:mr-16 flex justify-center md:justify-start">
           <img src={trioImage} alt="Buildings" className="max-w-[300px] w-full h-auto" />
         </div>

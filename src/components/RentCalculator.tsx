@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import backgroundImage from "../assets/exempel.png"; // Update this path as necessary
+import backgroundImage from "../assets/gjuteriet2.jpg"; // Update this path as necessary
 
 export const RentCalculator = () => {
   const [marketValue, setMarketValue] = useState(15000000); // initial market value
@@ -32,7 +32,7 @@ export const RentCalculator = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-left font-semibold mb-2">Estimerad Månadshyra (exkl. moms):</label>
+          <label className="block text-left font-semibold mb-2">Estimerad månadshyra (exkl. moms):</label>
           <div className="text-2xl font-bold">{roundedMonthlyRent.toLocaleString()} kr</div>
         </div>
         <a href="#apply" className="px-6 py-2 bg-black text-white rounded-full font-bold">Ansök nu</a>
