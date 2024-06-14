@@ -17,7 +17,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const SMTP_USER = 'kevin@utvide.se';
   const SMTP_PASS = 'Bnpr59211919+';
   const SMTP_FROM = 'kevin@utvide.se';
-  const SMTP_TO = 'kevin.selling@hotmail.com';
+  const SMTP_TO = 'info@vexaindustrihus.se';
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,

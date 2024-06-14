@@ -47,7 +47,6 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0px 20px",
-          borderTop: "2px solid #EFE3E3"
         }}
         buttonStyle={{
           background: "#EFE3E3",
