@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import backgroundImage from "@/assets/gjuteriet.jpg"; 
+import backgroundImage from "@/assets/gjuteriet.jpg";
 
 export const Hero = () => {
   return (
@@ -15,12 +15,12 @@ export const Hero = () => {
           <h1>Vi köper din fastighet till marknadsvärde</h1>
         </main>
 
-        <p className="text-2xl text-white md:w-10/12 mx-auto mt-4">
-          Frigör kapitalet i din industrifastighet, och fokusera på din verksamhet. 
-        </p>
-        <p className="text-2xl text-white md:w-10/12 mx-auto mt-2">
-          Enkelt, tryggt och långsiktigt.        
-        </p>
+        <div className="text-2xl text-white md:w-10/12 mx-auto mt-4">
+          <h2>Frigör kapitalet i din industrifastighet, och fokusera på din verksamhet.</h2>
+        </div>
+        <div className="text-2xl text-white md:w-10/12 mx-auto mt-2">
+          <h3>Enkelt, tryggt och långsiktigt.</h3>
+        </div>
 
         <div className="space-y-4 md:space-y-0 md:space-x-8 mt-6">
           <a href="#how">

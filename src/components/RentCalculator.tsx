@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import backgroundImage from "../assets/gjuteriet2.jpg"; // Update this path as necessary
+import backgroundImage from "../assets/gjuteriet2.jpg"; 
 
 export const RentCalculator = () => {
-  const [marketValue, setMarketValue] = useState(15000000); // initial market value
-  const monthlyRent = marketValue * 0.0083; // assuming 10% annual rent
+  const [marketValue, setMarketValue] = useState(15000000); 
+  const monthlyRent = marketValue * 0.0083; 
 
   const roundedMonthlyRent = Math.round(monthlyRent / 1000) * 1000;
   const roundedMarketValue = Math.round(marketValue / 100000) * 100000;
@@ -45,4 +45,4 @@ export const RentCalculator = () => {
   );
 };
 
-// Add the following CSS styles to your stylesheet
+

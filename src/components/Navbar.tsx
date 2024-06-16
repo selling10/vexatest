@@ -65,7 +65,7 @@ export const Navbar = () => {
               href="/"
               className="ml-0 text-xl flex text-black items-center"
             >
-              <img src={icon3} alt="Icon" className="h-12  mr-1 ml-6" /> {/* Adjust size as needed */}
+              <img src={icon3} alt="Icon" className="h-12 mr-1 ml-6" /> {/* Adjust size as needed */}
             </a>
           </NavigationMenuItem>
 
