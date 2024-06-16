@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Primary Meta Tags -->
-    <title>Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus</title>
-    <meta name="title" content="Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus" />
-    <meta name="description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-    
-    <!-- Keywords Meta Tag -->
-    <meta name="keywords" content="sälj industrifastighet, hyra tillbaka fastighet, marknadsvärde fastighet, Vexa Industrihus, frigör kapital, industriella fastigheter, fastighetslösningar" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./src/assets/icon.ico" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vexaindustrihus.se/" />
-    <meta property="og:title" content="Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus" />
-    <meta property="og:description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-    <meta property="og:image" content="https://vexaindustrihus.se/og-image.jpg" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://vexaindustrihus.se/" />
-    <meta property="twitter:title" content="Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus" />
-    <meta property="twitter:description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-    <meta property="twitter:image" content="https://vexaindustrihus.se/twitter-image.jpg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus</title>
+  <meta name="description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
+  <link rel="icon" type="image/x-icon" href="./src/assets/icon.ico" />
+
+  <!-- Schema Markup for Landing Page -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Vexa Industrihus",
+      "description": "Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag.",
+      "url": "https://vexaindustrihus.se",
+      "logo": "https://vexaindustrihus.se/src/assets/icon.ico",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+46 79 307 80 20",
+        "contactType": "Customer Service",
+        "email": "info@vexaindustrihus.se"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Example Street 1",
+        "addressLocality": "Stockholm",
+        "addressRegion": "Stockholm",
+        "postalCode": "12345",
+        "addressCountry": "SE"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
