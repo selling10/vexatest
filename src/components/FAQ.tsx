@@ -19,7 +19,7 @@ const FAQList: FAQProps[] = [
   },
   {
     question: "Hur går köpprocessen till?",
-    answer: "Processen börjar med att vi bokar in ett möte över en kaffe, där vi kommer ut till er och pratar igenom era behov och fastighetens förutsättningar. Därefter gör vi en värdering och finansiell kontroll av er som blivande hyresgäst. När vi är överens, skriver vi ett hyresavtal så att ni kan fortsätta använda fastigheten precis som vanligt. Vi ser till att hela processen går smidigt och enkelt, och finns med er hela vägen.",
+    answer: "Processen börjar med att vi bokar in ett möte där vi går igenom era behov och fastighetens förutsättningar. Därefter gör vi en värdering och finansiell kontroll av er som blivande hyresgäst. När vi är överens, skriver vi ett hyresavtal så att ni kan fortsätta använda fastigheten precis som vanligt. Vi ser till att hela processen går smidigt och enkelt, och finns med er hela vägen.",
     value: "item-2",
   },
   {
