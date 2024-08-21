@@ -14,7 +14,7 @@ const steps = [
   {
     number: "3",
     title: "Långsiktigt hyresavtal",
-    description: "Vi erbjuder alltid ett hyresavtal om minst 10 år, vilket ger stabilitet och förutsägbarhet för ditt företag.",
+    description: "Vi erbjuder alltid ett långt hyresavtal, vilket ger stabilitet och förutsägbarhet för ditt företag.",
   },
 ];
 
