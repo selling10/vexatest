@@ -2,8 +2,8 @@ import { useState } from 'react';
 import backgroundImage from "../assets/gjuteriet2.jpg"; 
 
 export const RentCalculator = () => {
-  const [marketValue, setMarketValue] = useState(15000000); 
-  const monthlyRent = marketValue * 0.0083; 
+  const [marketValue, setMarketValue] = useState(22500000); 
+  const monthlyRent = marketValue * 0.00667; // 8% annual rent divided by 12 months
 
   const roundedMonthlyRent = Math.round(monthlyRent / 1000) * 1000;
   const roundedMarketValue = Math.round(marketValue / 100000) * 100000;
@@ -25,14 +25,14 @@ export const RentCalculator = () => {
           <input
             type="range"
             min="5000000"
-            max="25000000"
+            max="40000000"  // Updated maximum value to 40 million
             value={marketValue}
             onChange={(e) => setMarketValue(Number(e.target.value))}
             className="w-full range-input"
           />
         </div>
         <div className="mb-6">
-          <label className="block text-left font-semibold mb-2">Estimerad månadshyra (exkl. moms):</label>
+          <label className="block text-left font-semibold mb-2">Estimerad månadshyra:</label>
           <div className="text-2xl font-bold">{roundedMonthlyRent.toLocaleString()} kr</div>
         </div>
         <a href="#apply" className="px-6 py-2 bg-black text-white rounded-full font-bold">Ansök nu</a>
@@ -44,5 +44,3 @@ export const RentCalculator = () => {
     </section>
   );
 };
-
-
