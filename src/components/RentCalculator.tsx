@@ -3,7 +3,7 @@ import backgroundImage from "../assets/gjuteriet2.jpg";
 
 export const RentCalculator = () => {
   const [marketValue, setMarketValue] = useState(22500000); 
-  const monthlyRent = marketValue * 0.7083; 
+  const monthlyRent = marketValue * 0.007083; 
 
   const roundedMonthlyRent = Math.round(monthlyRent / 1000) * 1000;
   const roundedMarketValue = Math.round(marketValue / 100000) * 100000;
