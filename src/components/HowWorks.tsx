@@ -8,8 +8,8 @@ const steps = [
   },
   {
     number: "2",
-    title: "Du hyr tillbaka fastigheten",
-    description: "Du hyr tillbaka fastigheten av oss med en årlig hyra som normalt motsvarar 8-10% av marknadsvärdet.",
+    title: "Hyr tillbaka fastigheten",
+    description: "Hyr tillbaka fastigheten av oss med en årlig hyra som är marknadsmässig och baseras på fastighetens aktuella värde.",
   },
   {
     number: "3",
