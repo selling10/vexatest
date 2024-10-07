@@ -6,14 +6,27 @@ import swedishFlag from "@/assets/sweden-flag.png";
 import englishFlag from "@/assets/uk-flag.png"; // Replace with appropriate flag
 
 export const Hero = () => {
-  const [scrollOpacity, setScrollOpacity] = useState(0); // Initial opacity is 0 (hidden)
+  const [scrollOpacity, setScrollOpacity] = useState(1); // Start with 1 to make the flags visible on load
 
   useEffect(() => {
+    // Check the scroll position when the component mounts
+    const checkScrollPosition = () => {
+      if (window.scrollY > 400) {
+        setScrollOpacity(0); // Hide the flags if the user has scrolled past 400px
+      } else {
+        setScrollOpacity(1); // Show the flags if the user is near the top
+      }
+    };
+
+    // Run the check on component mount (for refresh)
+    checkScrollPosition();
+
+    // Listen to scroll events to update opacity dynamically
     const handleScroll = () => {
       if (window.scrollY > 400) {
-        setScrollOpacity(0); // Fade out when scrolled past 400px
+        setScrollOpacity(0);
       } else {
-        setScrollOpacity(1); // Fade in when scrolled less than 400px
+        setScrollOpacity(1);
       }
     };
 
