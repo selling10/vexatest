@@ -10,6 +10,7 @@ import { ApplicationForm } from "./components/ApplicationForm";
 import { HowWorks } from "./components/HowWorks";
 import PrivacyPolicy from "./components/IntegrityPolicy";
 import CookieConsent from "react-cookie-consent";
+import MetaPixel from "./MetaPixel";
 import { Helmet } from "react-helmet";
 import "./App.css";
 
@@ -34,6 +35,7 @@ function Home() {
 function App() {
   return (
     <Router>
+         <MetaPixel />
       <Helmet>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
