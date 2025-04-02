@@ -2,8 +2,8 @@ import { useState } from 'react';
 import backgroundImage from "../assets/gjuteriet2.jpg"; 
 
 export const RentCalculator = () => {
-  const [marketValue, setMarketValue] = useState(22500000); 
-  const monthlyRent = marketValue * 0.007083; 
+  const [marketValue, setMarketValue] = useState(51000000); 
+  const monthlyRent = (marketValue * 0.086) / 12; // 8,4 % yield
 
   const roundedMonthlyRent = Math.round(monthlyRent / 1000) * 1000;
   const roundedMarketValue = Math.round(marketValue / 100000) * 100000;
@@ -24,8 +24,9 @@ export const RentCalculator = () => {
           </div>
           <input
             type="range"
-            min="5000000"
-            max="40000000"  // Updated maximum value to 40 million
+            min="12000000"
+            max="90000000"
+            step="1000000"
             value={marketValue}
             onChange={(e) => setMarketValue(Number(e.target.value))}
             className="w-full range-input"
