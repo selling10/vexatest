@@ -1,19 +1,59 @@
+import gjuteriet2Image from "@/assets/gjuteriet2.jpg";
+
 export const About = () => {
   return (
-    <section id="about" className="py-8 sm:py-12 bg-[#EFE3E3] w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white bg-opacity-70 rounded-lg py-12 px-6">
-          <div className="flex flex-col gap-8 md:gap-12">
-            <div className="flex flex-col justify-between">
-              <div className="pb-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-black">Om oss</h2>
-                <p className="text-xl mt-4" style={{ color: "#454545" }}>
-                  Med många års erfarenhet av att driva och utveckla framgångsrika företag, vet vi vad som krävs för att växa och lyckas. På Vexa Industrihus hjälper vi företag att frigöra kapital bundet i fastigheter genom att erbjuda lösningar där du säljer din fastighet och hyr den istället. Vi strävar efter att ge våra kunder friheten att fokusera på sin kärnverksamhet och nå sina affärsmål. Vår vision är att skapa värde och möjligheter genom innovativa och hållbara fastighetslösningar. Låt oss hjälpa dig att ta ditt företag till nästa nivå!
-                </p>
-                <p className="text-xl mt-4 " style={{ color: "#454545" }}>
-                  Vill ni veta mera? Hör av er på <a className="text-black underline" href="mailto:info@vexaindustrihus.se">info@vexaindustrihus.se</a> eller skicka in en ansökan <a href="#apply" className="text-black underline">här</a>, vi svarar vanligtvis inom 24 timmar.
-                </p>
-              </div>
+    <section 
+      id="about" 
+      className="relative py-20 md:py-32 w-full bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${gjuteriet2Image})`,
+      }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-75"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Om Vexa
+          </h2>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-8 text-lg md:text-xl text-white/90 leading-relaxed">
+            <p>
+              Vexa är en fastighetsinvesterare som fokuserar på industri-,
+              lager- och handelsfastigheter i svenska tillväxtkommuner. Vi
+              grundades 2018 och har sedan dess byggt en portfölj på cirka 20
+              000 kvm med ett fastighetsvärde på cirka 300 Mkr.
+            </p>
+            <p>
+              Vår strategi bygger på långsiktigt ägande och stabila
+              kassaflöden. Vi genomför både sale-leaseback-transaktioner där
+              företag säljer sin fastighet och hyr tillbaka den, samt
+              traditionella fastighetsförvärv av objekt med starka hyresgäster.
+            </p>
+            <p>
+              Vi investerar i fastigheter med cirka 1 000–6 000 kvm i svenska
+              kommuner med minst 20 000 invånare. Fokus ligger på objekt med
+              starka hyresgäster och goda förutsättningar för långsiktig
+              värdeutveckling.
+            </p>
+            <div className="pt-8">
+              <p className="text-xl font-semibold text-white mb-4">
+                Vill ni veta mer?
+              </p>
+              <p className="text-lg">
+                Kontakta oss på{" "}
+                <a
+                  className="text-white underline hover:text-white/80 transition-colors font-medium"
+                  href="mailto:info@vexa.se"
+                >
+                  info@vexa.se
+                </a>{" "}
+                eller{" "}
+                <a href="#apply" className="text-white underline hover:text-white/80 transition-colors font-medium">
+                  skicka in en förfrågan
+                </a>
+                . Vi återkommer vanligtvis inom 24 timmar.
+              </p>
             </div>
           </div>
         </div>

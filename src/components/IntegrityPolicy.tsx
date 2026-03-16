@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const PrivacyPolicy: React.FC = () => {
   useEffect(() => {
@@ -6,7 +7,14 @@ const PrivacyPolicy: React.FC = () => {
   }, []);
 
   return (
-    <div className="container mx-auto my-0 mt-0 bg-[#EFE3E3] p-8 max-w-3xl">
+    <>
+      <Helmet>
+        <title>Integritets- och cookiepolicy | Vexa</title>
+        <meta name="description" content="Läs Vexas integritets- och cookiepolicy. Vi värnar om din personliga integritet och förklarar hur vi samlar in och använder dina personuppgifter." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://vexa.se/privacy-policy" />
+      </Helmet>
+      <div className="container mx-auto my-0 mt-0 bg-[#EFE3E3] p-8 max-w-3xl">
       <h2 className="text-2xl font-bold mb-4">Integritets- och cookiepolicy</h2>
       <p className="mb-4">
         Vexa Industrihus värnar om din personliga integritet. Vexa Industrihus arbetar därför aktivt för att din integritet ska vara skyddad när du använder dig av våra tjänster.
@@ -165,13 +173,14 @@ const PrivacyPolicy: React.FC = () => {
         <br />
         Sverige
         <br />
-        Webbplats: <a href="https://vexaindustrihus.se" className="text-blue-600">https://vexaindustrihus.se</a>
+        Webbplats: <a href="https://vexa.se" className="text-blue-600">https://vexa.se</a>
         <br />
-        E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vexaindustrihus.se</a>
+        E-post: <a href="mailto:info@vexa.se" className="text-blue-600">info@vexa.se</a>
         <br />
         Telefonnummer: +46 (0) 79 -307 80 20
       </p>
-    </div>
+      </div>
+    </>
   );
 };
 

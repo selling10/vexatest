@@ -15,7 +15,7 @@ export const Footer = () => {
           </div>
           <div className="mb-2 md:mb-0">
             <h2 className="font-bold">Kontaktuppgifter</h2>
-            <p>E-post: info@vexaindustrihus.se</p>
+            <p>E-post: info@vexa.se</p>
             <p>Telefon: +46 (0) 79 - 307 80 20</p>
           </div>
           <div className="mb-2 md:mb-0">

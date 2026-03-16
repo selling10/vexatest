@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
@@ -18,30 +18,41 @@ import icon3 from '../assets/vexa.png';
 
 interface RouteProps {
   href: string;
-  label: string;
+  label: React.ReactNode;
 }
 
 const routeList: RouteProps[] = [
   {
-    href: "#how",
-    label: "Så funkar det",
+    href: "#top",
+    label: "Hem",
   },
   {
-    href: "#about",
-    label: "Om oss",
+    href: "#what-we-do",
+    label: (
+      <>
+        Om&nbsp;
+        <span className="italic">VEXA</span>
+      </>
+    ),
   },
   {
-    href: "#faq",
-    label: "Vanliga frågor",
+    href: "#deal-types",
+    label: "Sälja din fastighet",
+  },
+  {
+    href: "#portfolio",
+    label: "Portfölj",
   },
   {
     href: "#apply",
-    label: "Kontakt", // New "Kontakt" route
+    label: "Kontakt",
   },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isSellMenuOpen, setIsSellMenuOpen] = useState<boolean>(false);
+  const closeSellMenuTimeoutRef = useRef<number | null>(null);
   const navigate = useNavigate();
 
   const handleNavigation = (href: string) => {
@@ -65,7 +76,7 @@ export const Navbar = () => {
               href="/"
               className="ml-0 text-xl flex text-black items-center"
             >
-              <img src={icon3} alt="Icon" className="h-12 mr-1 ml-6" /> {/* Adjust size as needed */}
+              <img src={icon3} alt="Vexa logotyp" className="h-12 mr-1 ml-6" />
             </a>
           </NavigationMenuItem>
 
@@ -95,10 +106,10 @@ export const Navbar = () => {
                   </button>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-4 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
+                  {routeList.map(({ href, label }: RouteProps, index: number) => (
                     <a
                       rel="noreferrer noopener"
-                      key={label}
+                      key={index}
                       href={href}
                       onClick={(e) => {
                         e.preventDefault();
@@ -110,21 +121,6 @@ export const Navbar = () => {
                       {label}
                     </a>
                   ))}
-                  <a
-                    rel="noreferrer noopener"
-                    href="#apply"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsOpen(false);
-                      handleNavigation("#apply");
-                    }}
-                    className={`w-[110px] ${buttonVariants({
-                      variant: "secondary",
-                      className: "text-white"
-                    })}`}
-                  >
-                    Ansök nu
-                  </a>
                 </nav>
               </SheetContent>
             </Sheet>
@@ -132,41 +128,98 @@ export const Navbar = () => {
 
           {/* desktop */}
           <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '3%' }}>
-            {routeList.map((route: RouteProps, i) => (
-              <a
-                rel="noreferrer noopener"
-                href={route.href}
-                key={i}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation(route.href);
-                }}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                  className: "text-black"
-                })}`}
-              >
-                {route.label}
-              </a>
-            ))}
+            {routeList.map((route: RouteProps, i) => {
+              const isSellRoute = route.href === "#deal-types";
+
+              const openSellMenu = () => {
+                if (closeSellMenuTimeoutRef.current) {
+                  window.clearTimeout(closeSellMenuTimeoutRef.current);
+                  closeSellMenuTimeoutRef.current = null;
+                }
+                setIsSellMenuOpen(true);
+              };
+
+              const closeSellMenuWithDelay = () => {
+                if (closeSellMenuTimeoutRef.current) {
+                  window.clearTimeout(closeSellMenuTimeoutRef.current);
+                }
+                closeSellMenuTimeoutRef.current = window.setTimeout(() => {
+                  setIsSellMenuOpen(false);
+                  closeSellMenuTimeoutRef.current = null;
+                }, 150);
+              };
+
+              if (isSellRoute) {
+                return (
+                  <div key={i} className="relative">
+                    <a
+                      rel="noreferrer noopener"
+                      href={route.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigation(route.href);
+                      }}
+                      onMouseEnter={openSellMenu}
+                      onMouseLeave={closeSellMenuWithDelay}
+                      className={`text-[17px] ${buttonVariants({
+                        variant: "ghost",
+                        className: "text-black"
+                      })}`}
+                    >
+                      {route.label}
+                    </a>
+                    <div
+                      onMouseEnter={openSellMenu}
+                      onMouseLeave={closeSellMenuWithDelay}
+                      className={`absolute left-0 mt-2 ${
+                        isSellMenuOpen ? "block" : "hidden"
+                      } w-56 rounded-md bg-[#EFE3E3] shadow-lg ring-1 ring-black/5`}
+                    >
+                      <div className="py-2">
+                        <button
+                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
+                          onClick={() => handleNavigation("#deal-types")}
+                        >
+                          Typiska affärer
+                        </button>
+                        <button
+                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
+                          onClick={() => handleNavigation("#criteria")}
+                        >
+                          Vad vi letar efter
+                        </button>
+                        <button
+                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
+                          onClick={() => handleNavigation("#process")}
+                        >
+                          Vår process
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <a
+                  rel="noreferrer noopener"
+                  href={route.href}
+                  key={i}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(route.href);
+                  }}
+                  className={`text-[17px] ${buttonVariants({
+                    variant: "ghost",
+                    className: "text-black"
+                  })}`}
+                >
+                  {route.label}
+                </a>
+              );
+            })}
           </nav>
 
-          <div className="hidden md:flex gap-4">
-            <a
-              rel="noreferrer noopener"
-              href="#apply"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigation("#apply");
-              }}
-              className={`border px-4 py-2 rounded-full ${buttonVariants({
-                variant: "secondary",
-                className: "text-white"
-              })}`}
-            >
-              Ansök nu
-            </a>
-          </div>
+          <div className="hidden md:flex gap-4" />
         </NavigationMenuList>
       </NavigationMenu>
     </header>

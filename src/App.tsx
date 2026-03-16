@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { About } from "./components/About";
-import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
-import { RentCalculator } from "./components/RentCalculator";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ApplicationForm } from "./components/ApplicationForm";
-import { HowWorks } from "./components/HowWorks";
+import { WhatWeDo } from "./components/WhatWeDo";
+import { InvestmentCriteria } from "./components/InvestmentCriteria";
+import { TransactionTypes } from "./components/TransactionTypes";
+import { Process } from "./components/Process";
+import { Portfolio } from "./components/Portfolio";
 import PrivacyPolicy from "./components/IntegrityPolicy";
 import CookieConsent from "react-cookie-consent";
 import MetaPixel from "./MetaPixel";
@@ -18,15 +19,17 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus</title>
-        <meta name="description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-        <meta name="keywords" content="sälj industrifastighet, hyra tillbaka fastighet, marknadsvärde fastighet, Vexa Industrihus, frigör kapital, industriella fastigheter, fastighetslösningar" />
+        <title>Vexa | Köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner</title>
+        <meta name="description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare. Enkelt, tryggt och långsiktigt." />
+        <meta name="keywords" content="köpa fastighet, industrifastighet, lagerfastighet, handelsfastighet, fastighetsköpare, Vexa, svenska tillväxtkommuner, fastighetsinvestering, köp fastighet Sverige" />
+        <link rel="canonical" href="https://vexa.se/" />
       </Helmet>
       <Hero />
-      <HowWorks />
-      <RentCalculator />
-      <About />
-      <FAQ />
+      <WhatWeDo />
+      <TransactionTypes />
+      <InvestmentCriteria />
+      <Process />
+      <Portfolio />
       <ApplicationForm />
     </>
   );
@@ -39,16 +42,22 @@ function App() {
       <Helmet>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content="Vexa" />
+        <meta name="language" content="Swedish" />
+        <meta name="geo.region" content="SE" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://vexaindustrihus.se/" />
-        <meta property="og:title" content="Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus" />
-        <meta property="og:description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-        <meta property="og:image" content="https://vexaindustrihus.se/og-image.jpg" />
+        <meta property="og:url" content="https://vexa.se/" />
+        <meta property="og:title" content="Vexa | Köper handels-, industri- och lagerfastigheter" />
+        <meta property="og:description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare." />
+        <meta property="og:image" content="https://vexa.se/og-image.jpg" />
+        <meta property="og:locale" content="sv_SE" />
+        <meta property="og:site_name" content="Vexa" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://vexaindustrihus.se/" />
-        <meta property="twitter:title" content="Sälj din Industrifastighet till Marknadsvärde | Vexa Industrihus" />
-        <meta property="twitter:description" content="Frigör kapital genom att sälja din industrifastighet till marknadsvärde och hyr tillbaka den med Vexa Industrihus. En trygg och långsiktig lösning för ditt företag." />
-        <meta property="twitter:image" content="https://vexaindustrihus.se/twitter-image.jpg" />
+        <meta property="twitter:url" content="https://vexa.se/" />
+        <meta property="twitter:title" content="Vexa | Köper handels-, industri- och lagerfastigheter" />
+        <meta property="twitter:description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare." />
+        <meta property="twitter:image" content="https://vexa.se/twitter-image.jpg" />
       </Helmet>
       <Navbar />
       <Routes>

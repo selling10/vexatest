@@ -119,6 +119,9 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: #EFE3E3;
   }

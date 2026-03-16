@@ -68,11 +68,15 @@ export const ApplicationForm = () => {
         });
         setSubmitMessage("Vi har tagit emot dina uppgifter och återkommer inom kort!");
       } else {
-        setSubmitMessage("Något gick fel. Vänligen försök igen");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Error response: ", errorData);
+        const errorMessage = errorData.error || errorData.message || "Något gick fel. Vänligen försök igen";
+        setSubmitMessage(`Fel: ${errorMessage}`);
       }
     } catch (error) {
       console.error("Error sending email: ", error);
-      setSubmitMessage("Något gick fel. Vänligen försök igen");
+      const errorMessage = error instanceof Error ? error.message : "Något gick fel. Vänligen försök igen";
+      setSubmitMessage(`Fel: ${errorMessage}`);
     }
     setIsSubmitting(false);
   };
@@ -83,30 +87,42 @@ export const ApplicationForm = () => {
       className="relative flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="absolute inset-0 bg-[black] opacity-40"></div>
-      <div className="relative container mx-auto my-12 p-4 bg-white bg-opacity-80 rounded-lg shadow-md max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      <div className="relative container mx-auto my-12 p-6 md:p-10 bg-white bg-opacity-95 rounded-xl shadow-2xl max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <h2 className="text-3xl font-bold mb-4 mt-5 text-black">
-              Vi köper din fastighet till marknadsvärde
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 mt-2 text-black tracking-tight">
+              Kontakta oss
             </h2>
-            <p className="mb-4 text-black">
-              För att ansöka, fyll i era uppgifter så återkommer vi med ett preliminärt förslag på bud och hyresnivå.
+            <div className="w-16 h-1 bg-black mb-6"></div>
+            <p className="mb-6 text-black text-lg leading-relaxed">
+              Vill du komma i kontakt med oss?
             </p>
-            <p className="mb-4 text-black">
-              För tillfället tar vi endast emot ansökningar för kommersiella fastigheter med en minsta golvyta på 400 kvm.
+            <p className="mb-6 text-black text-lg leading-relaxed">
+              Har du en fastighet du vill diskutera eller en fråga till oss?<br /><br />
+              Fyll i formuläret så återkommer vi inom kort.
             </p>
-            <p className="mb-4 text-black font-bold">
-              Kontakta oss för mer information:
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <p className="mb-4 text-black font-semibold text-lg">
+                Kontaktuppgifter:
             </p>
-            <p className="mb-4 text-black">
-              E-post: <a href="mailto:info@vexaindustrihus.se" className="text-blue-600">info@vexaindustrihus.se</a><br />
+              <p className="mb-2 text-black">
+                E-post:{" "}
+                <a
+                  href="mailto:info@vexa.se"
+                  className="text-black underline hover:text-gray-700 transition-colors font-medium"
+                >
+                  info@vexa.se
+                </a>
+              </p>
+              <p className="text-black">
               Telefon: +46 (0) 79 - 307 80 20
             </p>
+            </div>
           </div>
-          <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
-            <h3 className="text-2xl font-bold mb-6 text-black">
-              Ansök nu
+          <div className="bg-gray-50 p-6 md:p-8 rounded-xl shadow-inner border border-gray-200">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-black">
+              Skicka förfrågan
             </h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -118,7 +134,7 @@ export const ApplicationForm = () => {
                   name="namn"
                   value={formValues.namn}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Namn"
                 />
               </div>
@@ -131,7 +147,7 @@ export const ApplicationForm = () => {
                   name="telefonnummer"
                   value={formValues.telefonnummer}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="07X - XXX XX XX"
                 />
               </div>
@@ -144,7 +160,7 @@ export const ApplicationForm = () => {
                   name="epostadress"
                   value={formValues.epostadress}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Skriv e-postadress"
                 />
               </div>
@@ -157,7 +173,7 @@ export const ApplicationForm = () => {
                   name="företagsnamn"
                   value={formValues.företagsnamn}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Skriv företagsnamn"
                 />
               </div>
@@ -170,7 +186,7 @@ export const ApplicationForm = () => {
                   name="adress"
                   value={formValues.adress}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Skriv fastighetens adress"
                 />
               </div>
@@ -183,7 +199,7 @@ export const ApplicationForm = () => {
                   name="postnummer"
                   value={formValues.postnummer}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Skriv fastighetens postnummer"
                 />
               </div>
@@ -196,7 +212,7 @@ export const ApplicationForm = () => {
                   name="ort"
                   value={formValues.ort}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-black focus:outline-none focus:border-black transition-colors"
                   placeholder="Skriv fastighetens ort"
                 />
               </div>
@@ -218,9 +234,9 @@ export const ApplicationForm = () => {
               </div>
               <button
                 type="submit"
-                className={`w-full py-2 rounded-full font-bold ${
+                className={`w-full py-4 rounded-full font-semibold text-lg shadow-lg transition-all duration-300 ${
                   isFormValid()
-                    ? "bg-black text-white"
+                    ? "bg-black text-white hover:bg-gray-800 hover:shadow-xl"
                     : "bg-gray-400 text-gray-800 cursor-not-allowed"
                 }`}
                 disabled={!isFormValid() || isSubmitting}
