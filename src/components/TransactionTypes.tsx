@@ -33,7 +33,7 @@ export const TransactionTypes = () => {
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-75"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                   Typiska affärer
@@ -43,11 +43,11 @@ export const TransactionTypes = () => {
                   några exempel på när Vexa kan vara relevant.
                 </p>
               </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {transactionTypes.map((type, index) => (
             <div
               key={index}
-              className="bg-transparent backdrop-blur-sm p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-white/50 hover:border-white group"
+              className="bg-transparent backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-white/50 hover:border-white group"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
                 {type.title}
