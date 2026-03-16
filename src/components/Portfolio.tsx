@@ -1,6 +1,6 @@
 import hbg2Image from "@/assets/HBG2.jpg";
 import nifelhemImage from "@/assets/Nifelhem.jpeg";
-import gnesta2Image from "@/assets/Gnesta2.jpg";
+import gnesta2Image from "@/assets/Gnesta2.JPG";
 
 export const Portfolio = () => {
   const properties = [
