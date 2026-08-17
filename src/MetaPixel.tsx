@@ -1,9 +1,17 @@
 import { useEffect } from "react";
 
+type FbqStub = ((...args: unknown[]) => void) & {
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[];
+  push: (...args: unknown[]) => void;
+  loaded: boolean;
+  version: string;
+};
+
 declare global {
   interface Window {
-    fbq?: (...args: unknown[]) => void;
-    _fbq?: (...args: unknown[]) => void;
+    fbq?: FbqStub;
+    _fbq?: FbqStub;
   }
 }
 
@@ -21,20 +29,13 @@ const MetaPixel = () => {
     document.head.appendChild(script);
 
     const stub = function (...args: unknown[]) {
-      (stub as { callMethod?: (...a: unknown[]) => void; queue?: unknown[] }).queue =
-        (stub as { queue?: unknown[] }).queue || [];
-      if ((stub as { callMethod?: (...a: unknown[]) => void }).callMethod) {
-        (stub as { callMethod: (...a: unknown[]) => void }).callMethod(...args);
+      stub.queue = stub.queue || [];
+      if (stub.callMethod) {
+        stub.callMethod(...args);
       } else {
-        (stub as { queue: unknown[] }).queue.push(args);
+        stub.queue.push(args);
       }
-    } as typeof window.fbq & {
-      callMethod?: (...args: unknown[]) => void;
-      queue?: unknown[];
-      push?: (...args: unknown[]) => void;
-      loaded?: boolean;
-      version?: string;
-    };
+    } as FbqStub;
 
     stub.push = stub;
     stub.loaded = true;
