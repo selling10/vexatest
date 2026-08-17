@@ -1,56 +1,95 @@
-import { Button } from "./ui/button";
-import backgroundImage from "@/assets/gjuteriet.jpg";
-import { useNavigate } from "react-router-dom";
+import { Facade } from "./Facade";
+import { Reveal, RevealText, Rule } from "./Reveal";
 
-export const Hero = () => {
-  const navigate = useNavigate();
-
-  const handleNavigation = (href: string) => {
-    if (window.location.pathname !== "/") {
-      navigate("/");
-    }
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
-  return (
-    <section
-      id="top"
-      className="relative bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto">
-        <main className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-          <h1>Vi köper din fastighet</h1>
-        </main>
-
-        <div className="text-lg md:text-xl lg:text-2xl text-white/95 md:w-11/12 mx-auto mt-4 leading-relaxed font-light">
-          <h2>
-            Handels-, industri- och lagerfastigheter i svenska tillväxtkommuner.
-          </h2>
+export const Hero = () => (
+  <section
+    id="top"
+    className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pb-24 pt-28 md:pb-36 md:pt-36"
+  >
+    <div className="page relative">
+      <div className="relative">
+        {/*
+         * Fasaden ritas från marklinjen och upp. Masken tonar vänsterkanten
+         * mot texten så de möts i stället för att krocka.
+         */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-14 right-0 z-0 h-[min(62vh,26rem)] w-[min(100%,42rem)] md:-bottom-20 md:h-[min(72vh,38rem)] md:w-[min(58%,48rem)] lg:h-[min(78vh,42rem)]"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
+          }}
+        >
+          <Facade
+            bays={10}
+            floors={3}
+            drift={22}
+            delay={180}
+            className="absolute inset-y-0 right-0 h-full w-auto text-ink/70 md:hidden"
+          />
+          <Facade
+            bays={13}
+            floors={3}
+            drift={36}
+            delay={180}
+            className="absolute inset-y-0 right-0 hidden h-full w-auto text-ink/70 md:block"
+          />
         </div>
 
-        <div className="mt-12 flex justify-center items-center">
-          <a
-            href="#deal-types"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("#deal-types");
-            }}
+        <div className="relative z-10 max-w-[36rem] py-6 md:pb-10 md:pt-8 lg:max-w-[40rem]">
+          <h1 className="text-display-1 font-semibold">
+            <RevealText
+              text="Vi köper din"
+              className="block"
+              delay={320}
+              step={50}
+            />
+            <RevealText
+              text="fastighet"
+              className="block"
+              delay={470}
+              step={50}
+            />
+          </h1>
+
+          <Reveal delay={620} className="mt-6 md:mt-8">
+            <p className="text-lead opacity-70">
+              Enkelt, tryggt och långsiktigt.
+            </p>
+          </Reveal>
+
+          <Reveal
+            delay={780}
+            className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
           >
-            <Button className="w-auto px-10 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300" variant="custom">
-              Läs mer
-            </Button>
-          </a>
+            <a
+              href="#kontakt"
+              className="group inline-flex items-center gap-3 text-meta-lg uppercase"
+            >
+              Få ett indikativt bud
+              <span
+                aria-hidden
+                className="block h-px w-10 origin-left bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-[1.6]"
+              />
+            </a>
+            <a
+              href="#sa-fungerar-det"
+              className="text-meta-lg uppercase opacity-50 transition-opacity duration-300 hover:opacity-100"
+            >
+              Läs mer om hur det fungerar
+            </a>
+          </Reveal>
         </div>
+
+        {/* Marklinjen i fasadens bas, utan extra sektionhöjd */}
+        <Rule
+          delay={320}
+          duration={1600}
+          className="absolute inset-x-0 -bottom-20 md:-bottom-28"
+        />
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);

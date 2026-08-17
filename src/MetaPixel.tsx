@@ -1,44 +1,53 @@
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+    _fbq?: (...args: unknown[]) => void;
+  }
+}
+
+/**
+ * Meta Pixel. ID via VITE_META_PIXEL_ID. Utan ID gör komponenten ingenting.
+ */
 const MetaPixel = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const fbq = (window as any).fbq; // TypeScript workaround
-      if (typeof fbq !== "function") {
-        (function (f: any, b, e, v, n?: any, t?: any, s?: any) {
-          if (f.fbq) return;
-          n = f.fbq = function () {
-            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-          };
-          if (!f._fbq) f._fbq = n;
-          n.push = n;
-          n.loaded = !0;
-          n.version = "2.0";
-          n.queue = [];
-          t = b.createElement(e);
-          t.async = !0;
-          t.src = v;
-          s = b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t, s);
-        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    const pixelId = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
+    if (!pixelId || window.fbq) return;
 
-        (window as any).fbq("init", "578156081710568");
-        (window as any).fbq("track", "PageView");
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://connect.facebook.net/en_US/fbevents.js";
+    document.head.appendChild(script);
+
+    const stub = function (...args: unknown[]) {
+      (stub as { callMethod?: (...a: unknown[]) => void; queue?: unknown[] }).queue =
+        (stub as { queue?: unknown[] }).queue || [];
+      if ((stub as { callMethod?: (...a: unknown[]) => void }).callMethod) {
+        (stub as { callMethod: (...a: unknown[]) => void }).callMethod(...args);
+      } else {
+        (stub as { queue: unknown[] }).queue.push(args);
       }
-    }
+    } as typeof window.fbq & {
+      callMethod?: (...args: unknown[]) => void;
+      queue?: unknown[];
+      push?: (...args: unknown[]) => void;
+      loaded?: boolean;
+      version?: string;
+    };
+
+    stub.push = stub;
+    stub.loaded = true;
+    stub.version = "2.0";
+    stub.queue = [];
+    window.fbq = stub;
+    window._fbq = stub;
+
+    window.fbq("init", pixelId);
+    window.fbq("track", "PageView");
   }, []);
 
-  return (
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style={{ display: "none" }}
-        src="https://www.facebook.com/tr?id=578156081710568&ev=PageView&noscript=1"
-        alt=""
-      />
-    </noscript>
-  );
+  return null;
 };
 
 export default MetaPixel;

@@ -1,40 +1,68 @@
 import { Link } from "react-router-dom";
+import { Brand } from "./Brand";
+import { Logo } from "./Logo";
+import { Reveal, Rule } from "./Reveal";
 
-export const Footer = () => {
-  return (
-    <footer className="bg-[#EFE3E3] py-8">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-black">
-          <div>
-            {/* Optional additional content */}
-          </div>
-          <div className="mb-2 md:mb-0">
-            <h1 className="text-lg font-bold">Vexa Industrihus</h1> 
-            <h1>En del av Utvide Fastigheter AB</h1>
-            <p>Org. Nummer: 559044-8337</p>
-          </div>
-          <div className="mb-2 md:mb-0">
-            <h2 className="font-bold">Kontaktuppgifter</h2>
-            <p>E-post: info@vexa.se</p>
-            <p>Telefon: +46 (0) 79 - 307 80 20</p>
-          </div>
-          <div className="mb-2 md:mb-0">
-            <h2 className="font-bold">Policyer</h2>
-            <p>
-              <Link to="/privacy-policy" className="text-black underline">Integritets- och</Link>
-            </p>
-            <p>
-              <Link to="/privacy-policy" className="text-black underline">cookiepolicy</Link>
-            </p>
-          </div>
-          <div>
-            {/* Optional additional content */}
-          </div>
-        </div>
-        <div className="mt-8 text-center text-sm text-gray-600">
-          &copy; {new Date().getFullYear()} by Utvide Fastigheter AB. All rights reserved.
-        </div>
+const year = new Date().getFullYear();
+
+export const Footer = () => (
+  <footer data-surface="dark" className="bg-ink text-rosa">
+    <div className="page pb-12 pt-section">
+      <Rule />
+
+      <div className="grid gap-12 pt-12 md:grid-cols-12 md:gap-8 md:pt-16">
+        <Reveal className="md:col-span-5">
+          <Logo className="h-10 md:h-12" />
+          <p className="mt-6 max-w-measure-sm text-body opacity-70">
+            Vi köper handels-, industri- och bostadsfastigheter runt om i
+            Sverige, för långsiktigt ägande.
+          </p>
+        </Reveal>
+
+        <Reveal delay={80} className="md:col-span-3 md:col-start-7">
+          <h2 className="text-meta uppercase opacity-50">Kontakt</h2>
+          <ul className="mt-4 space-y-1 text-body">
+            <li>
+              <a
+                href="mailto:info@vexa.se"
+                className="transition-opacity duration-300 hover:opacity-60"
+              >
+                info@vexa.se
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+46793078020"
+                className="transition-opacity duration-300 hover:opacity-60"
+              >
+                079 307 80 20
+              </a>
+            </li>
+          </ul>
+        </Reveal>
+
+        <Reveal delay={140} className="md:col-span-3 md:col-start-10">
+          <h2 className="text-meta uppercase opacity-50">Bolag</h2>
+          <ul className="mt-4 space-y-1 text-body">
+            <li className="opacity-70">
+              <Brand />, en del av Utvide AB
+            </li>
+            <li className="opacity-70">Org.nr 559044-8337</li>
+            <li>
+              <Link
+                to="/privacy-policy"
+                className="underline decoration-rosa/30 underline-offset-4 transition-colors duration-300 hover:decoration-rosa"
+              >
+                Integritets- och cookiepolicy
+              </Link>
+            </li>
+          </ul>
+        </Reveal>
       </div>
-    </footer>
-  );
-};
+
+      <p className="mt-16 text-meta uppercase opacity-40 md:mt-24">
+        © {year} <Brand />
+      </p>
+    </div>
+  </footer>
+);

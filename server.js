@@ -12,7 +12,21 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/api/send-email', async (req, res) => {
-  const { namn, telefonnummer, epostadress, företagsnamn, adress, postnummer, ort } = req.body;
+  const {
+    namn,
+    telefonnummer,
+    epostadress,
+    meddelande,
+    företagsnamn,
+    adress,
+    postnummer,
+    ort,
+  } = req.body ?? {};
+
+  if (!namn || !epostadress) {
+    res.status(400).json({ message: 'Namn och e-post krävs' });
+    return;
+  }
 
   // SMTP credentials - update these with your info@vexa.se credentials
   const SMTP_HOST = process.env.SMTP_HOST || 'smtp.websupport.se';
@@ -39,12 +53,25 @@ app.post('/api/send-email', async (req, res) => {
     },
   });
 
+  const plats = [adress, postnummer, ort].filter(Boolean).join(', ');
+
+  const text = [
+    `Namn: ${namn}`,
+    `E-post: ${epostadress}`,
+    telefonnummer && `Telefon: ${telefonnummer}`,
+    företagsnamn && `Företag: ${företagsnamn}`,
+    plats && `Adress: ${plats}`,
+    meddelande && `\nMeddelande:\n${meddelande}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
   const mailOptions = {
     from: SMTP_FROM,
     to: SMTP_TO,
     replyTo: epostadress, // Set Reply-To to the email address from the form
-    subject: 'Ny ansökan Vexa Industrihus',
-    text: `Namn: ${namn}\nTelefon: ${telefonnummer}\nE-post: ${epostadress}\nFöretagsnamn: ${företagsnamn}\nAdress: ${adress}\nPostnummer: ${postnummer}\nOrt: ${ort}`,
+    subject: 'Ny förfrågan via vexa.se',
+    text,
   };
 
   try {

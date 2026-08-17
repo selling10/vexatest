@@ -1,63 +1,56 @@
-import gjuteriet2Image from "@/assets/gjuteriet2.jpg";
+import { quay } from "@/assets/images";
+import { Brand } from "./Brand";
+import { Frame } from "./Frame";
+import { Reveal, RevealText, Rule } from "./Reveal";
 
-export const About = () => {
-  return (
-    <section 
-      id="about" 
-      className="relative py-20 md:py-32 w-full bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${gjuteriet2Image})`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-75"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            Om Vexa
-          </h2>
-        </div>
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-8 text-lg md:text-xl text-white/90 leading-relaxed">
-            <p>
-              Vexa är en fastighetsinvesterare som fokuserar på industri-,
-              lager- och handelsfastigheter i svenska tillväxtkommuner. Vi
-              grundades 2018 och har sedan dess byggt en portfölj på cirka 20
-              000 kvm med ett fastighetsvärde på cirka 300 Mkr.
-            </p>
-            <p>
-              Vår strategi bygger på långsiktigt ägande och stabila
-              kassaflöden. Vi genomför både sale-leaseback-transaktioner där
-              företag säljer sin fastighet och hyr tillbaka den, samt
-              traditionella fastighetsförvärv av objekt med starka hyresgäster.
-            </p>
-            <p>
-              Vi investerar i fastigheter med cirka 1 000–6 000 kvm i svenska
-              kommuner med minst 20 000 invånare. Fokus ligger på objekt med
-              starka hyresgäster och goda förutsättningar för långsiktig
-              värdeutveckling.
-            </p>
-            <div className="pt-8">
-              <p className="text-xl font-semibold text-white mb-4">
-                Vill ni veta mer?
-              </p>
-              <p className="text-lg">
-                Kontakta oss på{" "}
-                <a
-                  className="text-white underline hover:text-white/80 transition-colors font-medium"
-                  href="mailto:info@vexa.se"
-                >
-                  info@vexa.se
-                </a>{" "}
-                eller{" "}
-                <a href="#apply" className="text-white underline hover:text-white/80 transition-colors font-medium">
-                  skicka in en förfrågan
-                </a>
-                . Vi återkommer vanligtvis inom 24 timmar.
-              </p>
-            </div>
-          </div>
-        </div>
+export const About = () => (
+  <section id="om-oss" className="page py-section">
+    <Rule />
+
+    <div className="mt-10 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
+      <Reveal className="md:col-span-2">
+        <h2 className="text-meta uppercase opacity-50">Om oss</h2>
+      </Reveal>
+
+      <div className="md:col-span-9 md:col-start-4">
+        <p className="text-display-2 font-semibold">
+          <RevealText text="Vi investerar långsiktigt" className="block" />
+        </p>
       </div>
-    </section>
-  );
-};
+    </div>
+
+    <div className="mt-16 grid items-start gap-12 md:mt-24 md:grid-cols-12 md:gap-8">
+      <Reveal className="md:col-span-5">
+        <div className="space-y-6 max-w-measure text-body">
+          <p>
+            <Brand /> Industrihus grundades 2018. Vi investerar i
+            handels-, industri- och bostadsfastigheter över hela Sverige,
+            genom både vanliga förvärv och sale &amp; leaseback.
+          </p>
+          <p className="opacity-70">
+            Vi har ett långsiktigt perspektiv på våra investeringar. För oss
+            handlar det inte bara om att köpa en fastighet, utan om att förstå
+            vad som finns bakom den, verksamheten, människorna och
+            förutsättningarna för att skapa värde över tid.
+          </p>
+          <p className="opacity-70">
+            Bakom <Brand /> finns lång erfarenhet av att bygga, driva och
+            utveckla företag, både i Sverige och internationellt. Det gör att
+            vi förstår både fastighetsägarens och företagarens perspektiv.
+          </p>
+          <p className="opacity-70">
+            Vi tror på enkla processer, tydliga besked och långsiktiga
+            relationer. För oss är en bra affär en affär där båda parter känner
+            sig nöjda även långt efter att den är genomförd.
+          </p>
+        </div>
+      </Reveal>
+
+      <Frame
+        image={quay}
+        sizes="(min-width: 768px) 55vw, 100vw"
+        className="md:col-span-6 md:col-start-7"
+      />
+    </div>
+  </section>
+);
