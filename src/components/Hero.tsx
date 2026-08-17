@@ -6,51 +6,51 @@ export const Hero = () => (
     id="top"
     className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pb-24 pt-28 md:pb-36 md:pt-36"
   >
-    <div className="page relative">
+    {/*
+     * Fasaden förankras i herons topp (inte i botten/marklinjen),
+     * så den inte följer med när viewport-höjden ändras.
+     */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute right-0 top-32 z-0 h-[min(48vh,18rem)] w-[min(68%,18rem)] md:hidden"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
+      }}
+    >
+      <Facade
+        bays={8}
+        floors={3}
+        drift={22}
+        delay={180}
+        className="absolute inset-y-0 right-0 h-full w-auto text-ink/40"
+      />
+    </div>
+
+    <div
+      aria-hidden
+      className="pointer-events-none absolute right-0 top-28 z-0 hidden h-[min(70vh,40rem)] w-[min(58%,48rem)] md:block lg:top-32 lg:h-[min(78vh,46rem)]"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
+      }}
+    >
+      <Facade
+        bays={13}
+        floors={3}
+        drift={36}
+        delay={180}
+        className="absolute inset-y-0 right-0 h-full w-auto text-ink/70"
+      />
+    </div>
+
+    <div className="page relative z-10">
       <div className="relative">
-        {/*
-         * Fasaden ritas från marklinjen och upp. På mobil ligger den
-         * lägre och mer till höger, med starkare toning mot texten.
-         */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-16 right-0 z-0 h-[min(48vh,18rem)] w-[min(68%,18rem)] md:hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
-          }}
-        >
-          <Facade
-            bays={8}
-            floors={3}
-            drift={22}
-            delay={180}
-            className="absolute inset-y-0 right-0 h-full w-auto text-ink/40"
-          />
-        </div>
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-20 right-0 z-0 hidden h-[min(72vh,38rem)] w-[min(58%,48rem)] md:block lg:h-[min(78vh,42rem)]"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
-          }}
-        >
-          <Facade
-            bays={13}
-            floors={3}
-            drift={36}
-            delay={180}
-            className="absolute inset-y-0 right-0 h-full w-auto text-ink/70"
-          />
-        </div>
-
-        <div className="relative z-10 max-w-[20rem] py-6 sm:max-w-[28rem] md:max-w-[36rem] md:pb-10 md:pt-8 lg:max-w-[40rem]">
+        <div className="relative max-w-[20rem] py-6 sm:max-w-[28rem] md:max-w-[36rem] md:pb-10 md:pt-8 lg:max-w-[40rem]">
           {/* Mjuk rosa slöja bakom texten i mobilvy */}
           <div
             aria-hidden
@@ -100,12 +100,7 @@ export const Hero = () => (
           </Reveal>
         </div>
 
-        {/* Marklinjen i fasadens bas, utan extra sektionhöjd */}
-        <Rule
-          delay={320}
-          duration={1600}
-          className="absolute inset-x-0 -bottom-20 md:-bottom-28"
-        />
+        <Rule delay={320} duration={1600} className="mt-10 md:mt-14" />
       </div>
     </div>
   </section>
