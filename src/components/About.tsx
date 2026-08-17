@@ -40,8 +40,8 @@ export const About = () => (
           </p>
           <p className="opacity-70">
             Vi tror på enkla processer, tydliga besked och långsiktiga
-            relationer. För oss är en bra affär en affär där båda parter känner
-            sig nöjda även långt efter att den är genomförd.
+            relationer. Vi arbetar alltid för att hitta lösningar och affärer
+            där alla parter blir vinnare.
           </p>
         </div>
       </Reveal>
