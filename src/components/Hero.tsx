@@ -9,12 +9,31 @@ export const Hero = () => (
     <div className="page relative">
       <div className="relative">
         {/*
-         * Fasaden ritas från marklinjen och upp. Masken tonar vänsterkanten
-         * mot texten så de möts i stället för att krocka.
+         * Fasaden ritas från marklinjen och upp. På mobil ligger den
+         * lägre och mer till höger, med starkare toning mot texten.
          */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-14 right-0 z-0 h-[min(62vh,26rem)] w-[min(100%,42rem)] md:-bottom-20 md:h-[min(72vh,38rem)] md:w-[min(58%,48rem)] lg:h-[min(78vh,42rem)]"
+          className="pointer-events-none absolute -bottom-16 right-0 z-0 h-[min(48vh,18rem)] w-[min(68%,18rem)] md:hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
+          }}
+        >
+          <Facade
+            bays={8}
+            floors={3}
+            drift={22}
+            delay={180}
+            className="absolute inset-y-0 right-0 h-full w-auto text-ink/40"
+          />
+        </div>
+
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-20 right-0 z-0 hidden h-[min(72vh,38rem)] w-[min(58%,48rem)] md:block lg:h-[min(78vh,42rem)]"
           style={{
             maskImage:
               "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
@@ -23,22 +42,20 @@ export const Hero = () => (
           }}
         >
           <Facade
-            bays={10}
-            floors={3}
-            drift={22}
-            delay={180}
-            className="absolute inset-y-0 right-0 h-full w-auto text-ink/70 md:hidden"
-          />
-          <Facade
             bays={13}
             floors={3}
             drift={36}
             delay={180}
-            className="absolute inset-y-0 right-0 hidden h-full w-auto text-ink/70 md:block"
+            className="absolute inset-y-0 right-0 h-full w-auto text-ink/70"
           />
         </div>
 
-        <div className="relative z-10 max-w-[36rem] py-6 md:pb-10 md:pt-8 lg:max-w-[40rem]">
+        <div className="relative z-10 max-w-[20rem] py-6 sm:max-w-[28rem] md:max-w-[36rem] md:pb-10 md:pt-8 lg:max-w-[40rem]">
+          {/* Mjuk rosa slöja bakom texten i mobilvy */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10 bg-gradient-to-r from-rosa from-55% via-rosa/90 to-transparent md:hidden"
+          />
           <h1 className="text-display-1 font-semibold">
             <RevealText
               text="Vi köper din"
@@ -62,7 +79,7 @@ export const Hero = () => (
 
           <Reveal
             delay={780}
-            className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
+            className="mt-10 flex flex-col items-start gap-4"
           >
             <a
               href="#kontakt"
