@@ -5,7 +5,7 @@ import { Reveal, RevealText } from "./Reveal";
 const ways = [
   {
     title: "Sälj fastigheten",
-    body: "Vill ni sälja fastigheten och lämna över ägandet gör vi ett vanligt förvärv. Ett förutsättningslöst samtal räcker för att börja. Ni får tydliga besked, och affären tar normalt omkring 30 dagar.",
+    body: "Vill ni sälja fastigheten och lämna över ägandet gör vi ett vanligt förvärv. Ett förutsättningslöst samtal räcker för att börja. Ni får tydliga besked, och en affär tar normalt 14-30 dagar beroende på förutsättningarna.",
     href: "#forvarv",
     link: "Läs mer om vanliga förvärv",
     image: flowerteam,

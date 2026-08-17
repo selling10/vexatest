@@ -5,8 +5,8 @@ import { Reveal, RevealText, Rule } from "./Reveal";
 const steps = [
   {
     index: "01",
-    title: "Ett första samtal",
-    body: "Skicka några rader om fastigheten eller slå oss en signal. Ingen presentation eller förberedelse behövs, ett enkelt samtal räcker för att börja.",
+    title: "Ett första möte",
+    body: "Skicka några rader eller slå oss en signal. Vi kommer gärna förbi på en kopp kaffe, förutsättningslöst. Ingen presentation behövs, vi bygger hellre en personlig kontakt från början.",
   },
   {
     index: "02",
@@ -16,7 +16,7 @@ const steps = [
   {
     index: "03",
     title: "Affär och utbetalning",
-    body: "När vi är överens går vi igenom fastigheten och förutsättningarna för affären. Normalt kan hela processen vara klar inom omkring 30 dagar.",
+    body: "När vi är överens går vi igenom fastigheten och förutsättningarna för affären. Normalt tar affären 14-30 dagar beroende på förutsättningarna.",
   },
 ];
 
@@ -50,8 +50,8 @@ export const Acquisition = () => (
             <Reveal delay={200}>
               <p className="mt-8 max-w-measure text-lead opacity-70">
                 Ni säljer fastigheten, vi tar över som långsiktig ägare.
-                Processen är enkel och ni har hela tiden direktkontakt med
-                personer som kan fatta beslut.
+                Processen är enkel, vi träffas gärna personligen, och ni har
+                hela tiden direktkontakt med beslutsfattare.
               </p>
             </Reveal>
           </div>
