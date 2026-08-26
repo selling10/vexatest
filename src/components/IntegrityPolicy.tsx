@@ -177,7 +177,7 @@ const PrivacyPolicy: React.FC = () => {
         <br />
         E-post: <a href="mailto:info@vexa.se" className="underline underline-offset-4 transition-opacity duration-300 hover:opacity-60">info@vexa.se</a>
         <br />
-        Telefonnummer: +46 (0) 79 -307 80 20
+        Telefonnummer: +46 (0) 79 307 80 20
       </p>
       </div>
     </>

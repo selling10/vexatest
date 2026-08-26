@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Cta } from "./Cta";
 import { Reveal, RevealText, Rule } from "./Reveal";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -80,7 +81,7 @@ export const Contact = () => {
                 href="tel:+46793078020"
                 className="mt-2 block text-display-3 font-semibold transition-opacity duration-300 ease-vexa hover:opacity-60"
               >
-                079 307 80 20
+                +46 (0) 79 307 80 20
               </a>
             </Reveal>
           </div>
@@ -139,17 +140,15 @@ export const Contact = () => {
                 </div>
 
                 <div className="mt-10 flex flex-wrap items-center gap-6">
-                  <button
+                  <Cta
                     type="submit"
+                    variant="primary"
+                    tone="dark"
                     disabled={status === "sending"}
-                    className="group inline-flex items-center gap-3 text-meta-lg uppercase disabled:opacity-40"
+                    className="disabled:opacity-40"
                   >
                     {status === "sending" ? "Skickar" : "Skicka"}
-                    <span
-                      aria-hidden
-                      className="block h-px w-10 origin-left bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-[1.6]"
-                    />
-                  </button>
+                  </Cta>
 
                   {status === "error" && (
                     <p role="alert" className="text-body opacity-70">

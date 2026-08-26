@@ -227,7 +227,7 @@ export const Navbar = () => {
           </ul>
 
           <p className="mt-10 text-meta uppercase opacity-60">
-            info@vexa.se, 079 307 80 20
+            info@vexa.se, +46 (0) 79 307 80 20
           </p>
         </nav>
       </div>

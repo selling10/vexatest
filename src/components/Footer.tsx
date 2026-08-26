@@ -35,7 +35,7 @@ export const Footer = () => (
                 href="tel:+46793078020"
                 className="transition-opacity duration-300 hover:opacity-60"
               >
-                079 307 80 20
+                +46 (0) 79 307 80 20
               </a>
             </li>
           </ul>

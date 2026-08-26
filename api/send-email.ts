@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
+import { smtpConfig } from '../lib/smtp-config.js';
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (req.method !== 'POST') {
@@ -24,23 +25,32 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return;
   }
 
-  // SMTP credentials for info@vexa.se
-  const SMTP_HOST = process.env.SMTP_HOST || 'smtp.websupport.se';
-  const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-  const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
-  const SMTP_USER = process.env.SMTP_USER || 'info@vexa.se';
-  const SMTP_PASS = process.env.SMTP_PASS || '';
-  const SMTP_FROM = process.env.SMTP_FROM || 'info@vexa.se';
-  const SMTP_TO = process.env.SMTP_TO || 'info@vexa.se';
+  const {
+    SMTP_HOST,
+    SMTP_PORT,
+    SMTP_SECURE,
+    SMTP_USER,
+    SMTP_PASS,
+    SMTP_FROM,
+    SMTP_TO,
+  } = smtpConfig();
+
+  if (!SMTP_PASS) {
+    res.status(500).json({ message: 'SMTP-uppgifter saknas på servern' });
+    return;
+  }
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
-    secure: SMTP_SECURE, // false for TLS
+    secure: SMTP_SECURE,
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
+    ...(SMTP_SECURE
+      ? { tls: { minVersion: "TLSv1.2" } }
+      : { requireTLS: true, tls: { minVersion: "TLSv1.2" } }),
   });
 
   const plats = [adress, postnummer, ort].filter(Boolean).join(', ');
@@ -69,7 +79,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     console.log('Email sent: ', info.response);
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (err) {
-    const error = err as Error; // Cast the error to Error type
+    const error = err as Error;
     console.error('Error sending email: ', error.message);
     res.status(500).json({ message: 'Error sending email', error: error.message });
   }

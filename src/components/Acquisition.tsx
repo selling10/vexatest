@@ -1,4 +1,5 @@
 import { hall, icarus } from "@/assets/images";
+import { Cta } from "./Cta";
 import { Frame } from "./Frame";
 import { Reveal, RevealText, Rule } from "./Reveal";
 
@@ -16,7 +17,7 @@ const steps = [
   {
     index: "03",
     title: "Affär och utbetalning",
-    body: "När vi är överens går vi igenom fastigheten och förutsättningarna för affären. Normalt tar affären 14-30 dagar beroende på förutsättningarna.",
+    body: "När vi är överens går vi igenom fastigheten och förutsättningarna för affären. Normalt tar affären 2-4 veckor beroende på förutsättningarna.",
   },
 ];
 
@@ -49,9 +50,9 @@ export const Acquisition = () => (
             </p>
             <Reveal delay={200}>
               <p className="mt-8 max-w-measure text-lead opacity-70">
-                Ni säljer fastigheten, vi tar över som långsiktig ägare.
-                Processen är enkel, vi träffas gärna personligen, och ni har
-                hela tiden direktkontakt med beslutsfattare.
+                Ni säljer fastigheten och vi tar över som långsiktig ägare.
+                Processen är enkel och ni har hela tiden direktkontakt med
+                beslutsfattare.
               </p>
             </Reveal>
           </div>
@@ -94,16 +95,9 @@ export const Acquisition = () => (
             ))}
 
             <Reveal delay={160}>
-              <a
-                href="#kontakt"
-                className="group inline-flex items-center gap-3 text-meta-lg uppercase"
-              >
+              <Cta href="#kontakt" variant="primary" tone="dark">
                 Få ett indikativt bud
-                <span
-                  aria-hidden
-                  className="block h-px w-10 origin-left bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-[1.6]"
-                />
-              </a>
+              </Cta>
             </Reveal>
           </div>
         </div>

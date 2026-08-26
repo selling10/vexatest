@@ -1,8 +1,7 @@
 import flowerteam640 from "./site/duotone/flowerteam-640.webp";
 import flowerteam1000 from "./site/duotone/flowerteam-1000.webp";
-import flowerteam1400 from "./site/duotone/flowerteam-1400.webp";
-import flowerteam1672 from "./site/duotone/flowerteam-1672.webp";
-import flowerteamFallback from "./site/duotone/flowerteam-1280.jpg";
+import flowerteam1024 from "./site/duotone/flowerteam-1024.webp";
+import flowerteamFallback from "./site/duotone/flowerteam-1024.jpg";
 
 import gnesta640 from "./site/duotone/gnesta-640.webp";
 import gnesta1000 from "./site/duotone/gnesta-1000.webp";
@@ -115,11 +114,10 @@ export const flowerteam = photo(
   [
     [flowerteam640, 640],
     [flowerteam1000, 1000],
-    [flowerteam1400, 1400],
-    [flowerteam1672, 1672],
+    [flowerteam1024, 1024],
   ],
-  1672,
-  526
+  1024,
+  323
 );
 
 export const gnesta = photo(

@@ -1,4 +1,5 @@
 import { maskinisten, nifelhem } from "@/assets/images";
+import { Cta } from "./Cta";
 import { Frame } from "./Frame";
 import { Reveal, RevealText, Rule } from "./Reveal";
 
@@ -86,16 +87,9 @@ export const SaleLeaseback = () => (
         ))}
 
         <Reveal delay={160}>
-          <a
-            href="#kontakt"
-            className="group inline-flex items-center gap-3 text-meta-lg uppercase"
-          >
+          <Cta href="#kontakt" variant="primary" tone="light">
             Prata med oss om sale &amp; leaseback
-            <span
-              aria-hidden
-              className="block h-px w-10 origin-left bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-[1.6]"
-            />
-          </a>
+          </Cta>
         </Reveal>
       </div>
     </div>

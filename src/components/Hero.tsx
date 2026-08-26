@@ -1,10 +1,11 @@
 import { Facade } from "./Facade";
+import { Cta } from "./Cta";
 import { Reveal, RevealText, Rule } from "./Reveal";
 
 export const Hero = () => (
   <section
     id="top"
-    className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pb-24 pt-28 md:pb-36 md:pt-36"
+    className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pb-20 pt-28 md:justify-end md:pb-36 md:pt-36"
   >
     {/*
      * Fasaden förankras i herons topp (inte i botten/marklinjen),
@@ -12,7 +13,7 @@ export const Hero = () => (
      */}
     <div
       aria-hidden
-      className="pointer-events-none absolute right-0 top-32 z-0 h-[min(48vh,18rem)] w-[min(68%,18rem)] md:hidden"
+      className="pointer-events-none absolute right-0 top-[clamp(7rem,22vh,10rem)] z-0 h-[min(40vh,16rem)] w-[min(68%,18rem)] md:hidden"
       style={{
         maskImage:
           "linear-gradient(to right, transparent 0%, transparent 32%, black 85%)",
@@ -50,21 +51,21 @@ export const Hero = () => (
 
     <div className="page relative z-10">
       <div className="relative">
-        <div className="relative max-w-[20rem] py-6 sm:max-w-[28rem] md:max-w-[36rem] md:pb-10 md:pt-8 lg:max-w-[40rem]">
+        <div className="relative max-w-[20rem] pb-6 sm:max-w-[28rem] md:max-w-[36rem] md:pb-10 md:pt-14 lg:max-w-[40rem]">
           {/* Mjuk rosa slöja bakom texten i mobilvy */}
           <div
             aria-hidden
             className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10 bg-gradient-to-r from-rosa from-55% via-rosa/90 to-transparent md:hidden"
           />
-          <h1 className="text-display-1 font-semibold">
+          <h1 className="text-[clamp(2.25rem,1.35rem+4.8vw,5.75rem)] font-semibold leading-[0.95] tracking-[-0.04em]">
             <RevealText
-              text="Vi köper din"
+              text="Frigör kapitalet"
               className="block"
               delay={320}
               step={50}
             />
             <RevealText
-              text="fastighet"
+              text="i din fastighet"
               className="block"
               delay={470}
               step={50}
@@ -81,22 +82,17 @@ export const Hero = () => (
             delay={780}
             className="mt-10 flex flex-col items-start gap-4"
           >
-            <a
-              href="#kontakt"
-              className="group inline-flex items-center gap-3 text-meta-lg uppercase"
-            >
+            <Cta href="#kontakt" variant="primary" tone="light">
               Få ett indikativt bud
-              <span
-                aria-hidden
-                className="block h-px w-10 origin-left bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-[1.6]"
-              />
-            </a>
-            <a
+            </Cta>
+            <Cta
               href="#sa-fungerar-det"
-              className="text-meta-lg uppercase opacity-50 transition-opacity duration-300 hover:opacity-100"
+              variant="secondary"
+              tone="light"
+              className="pl-5"
             >
               Läs mer om hur det fungerar
-            </a>
+            </Cta>
           </Reveal>
         </div>
 
