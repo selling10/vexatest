@@ -44,9 +44,8 @@ export const Footer = () => (
         <Reveal delay={140} className="md:col-span-3 md:col-start-10">
           <h2 className="text-meta uppercase opacity-50">Bolag</h2>
           <ul className="mt-4 space-y-1 text-body">
-            <li className="opacity-70">
-              <Brand />, en del av Utvide AB
-            </li>
+            <li className="opacity-70">VEXA Industrihus AB</li>
+            <li className="opacity-70">Grev Turegatan 26, 114 38 Stockholm</li>
             <li className="opacity-70">Org.nr 559044-8337</li>
             <li>
               <Link

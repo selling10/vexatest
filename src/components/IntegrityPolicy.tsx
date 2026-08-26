@@ -29,7 +29,7 @@ const PrivacyPolicy: React.FC = () => {
         Denna integritetspolicy förklarar hur vi samlar in och använder dina personuppgifter. Den beskriver också dina rättigheter och hur du kan göra dem gällande.
       </p>
       <p className="mb-5 max-w-measure text-body opacity-80">
-        <Brand /> Industrihus är personuppgiftsansvariga för behandlingen av dina personuppgifter.
+        VEXA Industrihus AB är personuppgiftsansvarig för behandlingen av dina personuppgifter.
       </p>
       <p className="mb-5 max-w-measure text-body opacity-80">
         Denna integritetspolicy uppdaterades senast den 12 juni 2024 och gäller för medborgare och lagligt permanent bosatta i Europeiska ekonomiska samarbetsområdet och Schweiz.
@@ -167,7 +167,7 @@ const PrivacyPolicy: React.FC = () => {
 
       <h3 className="mb-4 mt-16 text-display-3 font-semibold">9. Kontaktuppgifter</h3>
       <p className="mb-5 max-w-measure text-body opacity-80">
-        <Brand /> Industrihus
+        VEXA Industrihus
         <br />
         BOX 55639, 102 14 Stockholm
         <br />
