@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import { smtpConfig } from './lib/smtp-config.js';
 
 dotenv.config();
 
@@ -12,16 +13,37 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/api/send-email', async (req, res) => {
-  const { namn, telefonnummer, epostadress, företagsnamn, adress, postnummer, ort } = req.body;
+  const {
+    namn,
+    telefonnummer,
+    epostadress,
+    meddelande,
+    företagsnamn,
+    adress,
+    postnummer,
+    ort,
+  } = req.body ?? {};
+
+  if (!namn || !epostadress) {
+    res.status(400).json({ message: 'Namn och e-post krävs' });
+    return;
+  }
 
   // SMTP credentials - update these with your info@vexa.se credentials
-  const SMTP_HOST = process.env.SMTP_HOST || 'smtp.websupport.se';
-  const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-  const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
-  const SMTP_USER = process.env.SMTP_USER || 'info@vexa.se';
-  const SMTP_PASS = process.env.SMTP_PASS || '';
-  const SMTP_FROM = process.env.SMTP_FROM || 'info@vexa.se';
-  const SMTP_TO = process.env.SMTP_TO || 'info@vexa.se';
+  const {
+    SMTP_HOST,
+    SMTP_PORT,
+    SMTP_SECURE,
+    SMTP_USER,
+    SMTP_PASS,
+    SMTP_FROM,
+    SMTP_TO,
+  } = smtpConfig();
+
+  if (!SMTP_PASS) {
+    res.status(500).json({ message: 'SMTP-uppgifter saknas på servern' });
+    return;
+  }
 
   console.log('Attempting to send email...');
   console.log('SMTP_HOST:', SMTP_HOST);
@@ -32,19 +54,36 @@ app.post('/api/send-email', async (req, res) => {
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
-    secure: SMTP_SECURE, // false for TLS
+    secure: SMTP_SECURE,
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
+    requireTLS: !SMTP_SECURE,
+    tls: {
+      minVersion: "TLSv1.2",
+    },
   });
+
+  const plats = [adress, postnummer, ort].filter(Boolean).join(', ');
+
+  const text = [
+    `Namn: ${namn}`,
+    `E-post: ${epostadress}`,
+    telefonnummer && `Telefon: ${telefonnummer}`,
+    företagsnamn && `Företag: ${företagsnamn}`,
+    plats && `Adress: ${plats}`,
+    meddelande && `\nMeddelande:\n${meddelande}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
 
   const mailOptions = {
     from: SMTP_FROM,
     to: SMTP_TO,
     replyTo: epostadress, // Set Reply-To to the email address from the form
-    subject: 'Ny ansökan Vexa Industrihus',
-    text: `Namn: ${namn}\nTelefon: ${telefonnummer}\nE-post: ${epostadress}\nFöretagsnamn: ${företagsnamn}\nAdress: ${adress}\nPostnummer: ${postnummer}\nOrt: ${ort}`,
+    subject: 'Ny förfrågan via vexa.se',
+    text,
   };
 
   try {

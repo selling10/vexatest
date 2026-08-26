@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .env
 
+# Skärmbilder från scripts/shots.mjs
+.shots
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -24,3 +27,7 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+__pycache__/
+*.pyc
+.env*.local

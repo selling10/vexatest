@@ -3,58 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vexa | Köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner</title>
-  <meta name="description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare. Enkelt, tryggt och långsiktigt." />
-  <meta name="keywords" content="köpa fastighet, industrifastighet, lagerfastighet, handelsfastighet, fastighetsköpare, Vexa, svenska tillväxtkommuner, fastighetsinvestering" />
-  <meta name="author" content="Vexa" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="language" content="Swedish" />
-  <meta name="geo.region" content="SE" />
-  <link rel="icon" type="image/x-icon" href="./src/assets/icon.ico" />
 
-  <!-- Canonical Tag -->
-  <link rel="canonical" href="https://vexa.se/" />
+  <title>VEXA | Vi köper din fastighet – förvärv och sale &amp; leaseback</title>
+  <meta name="description" content="VEXA Industrihus köper handels-, industri- och bostadsfastigheter i hela Sverige. Vanliga förvärv och sale &amp; leaseback. Enkelt, tryggt och långsiktigt, grundat 2018." />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vexa.se/" />
-  <meta property="og:title" content="Vexa | Köper handels-, industri- och lagerfastigheter" />
-  <meta property="og:description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare." />
-  <meta property="og:image" content="https://vexa.se/og-image.jpg" />
-  <meta property="og:locale" content="sv_SE" />
-  <meta property="og:site_name" content="Vexa" />
+  <!-- Rosa bakgrund + mörk V (nya filnamn för att bryta webbläsarcache) -->
+  <link rel="icon" type="image/svg+xml" href="/vexa-favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/vexa-favicon.png?v=3" />
+  <link rel="icon" href="/vexa-favicon.ico?v=3" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://vexa.se/" />
-  <meta property="twitter:title" content="Vexa | Köper handels-, industri- och lagerfastigheter" />
-  <meta property="twitter:description" content="Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare." />
-  <meta property="twitter:image" content="https://vexa.se/twitter-image.jpg" />
+  <!-- Övrig SEO- och delningsmetadata sätts av react-helmet i src/App.tsx -->
 
-  <!-- Schema Markup for Landing Page -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      "name": "Vexa",
-      "alternateName": "Vexa Industrihus",
-      "description": "Vexa köper handels-, industri- och lagerfastigheter i svenska tillväxtkommuner. Vi erbjuder flexibla lösningar för företag som vill utvecklas vidare.",
-      "url": "https://vexa.se",
-      "logo": "https://vexa.se/src/assets/icon.ico",
-      "sameAs": [],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+46-79-307-80-20",
-        "contactType": "Customer Service",
-        "email": "info@vexa.se",
-        "availableLanguage": ["Swedish"]
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Sweden"
-      },
-      "serviceType": "Fastighetsköp",
-      "priceRange": "$$"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://vexa.se/#organization",
+          "name": "VEXA Industrihus AB",
+          "alternateName": "VEXA Industrihus",
+          "url": "https://vexa.se",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Grev Turegatan 26",
+            "postalCode": "114 38",
+            "addressLocality": "Stockholm",
+            "addressCountry": "SE"
+          },
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://vexa.se/icon-512.png",
+            "width": 512,
+            "height": 512
+          },
+          "image": "https://vexa.se/og-image.jpg",
+          "description": "VEXA Industrihus köper handels-, industri- och bostadsfastigheter i hela Sverige genom vanliga förvärv och sale & leaseback. Långsiktigt ägande, grundat 2018.",
+          "foundingDate": "2018",
+          "email": "info@vexa.se",
+          "telephone": "+46-79-307-80-20",
+          "parentOrganization": {
+            "@type": "Organization",
+            "name": "Utvide AB",
+            "taxID": "559044-8337"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Sweden"
+          },
+          "knowsAbout": [
+            "Fastighetsförvärv",
+            "Sale and leaseback",
+            "Handelsfastigheter",
+            "Industrifastigheter",
+            "Bostadsfastigheter"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+46-79-307-80-20",
+            "contactType": "sales",
+            "email": "info@vexa.se",
+            "availableLanguage": ["sv", "Swedish"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://vexa.se/#website",
+          "url": "https://vexa.se",
+          "name": "VEXA",
+          "description": "Vi köper din fastighet. Förvärv och sale & leaseback i hela Sverige.",
+          "publisher": { "@id": "https://vexa.se/#organization" },
+          "inLanguage": "sv-SE"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://vexa.se/#webpage",
+          "url": "https://vexa.se/",
+          "name": "VEXA | Vi köper din fastighet",
+          "isPartOf": { "@id": "https://vexa.se/#website" },
+          "about": { "@id": "https://vexa.se/#organization" },
+          "description": "Sälj fastigheten eller sälj och hyr tillbaka. VEXA ger tydliga besked och köper för att äga länge.",
+          "inLanguage": "sv-SE"
+        }
+      ]
     }
   </script>
 </head>

@@ -1,227 +1,236 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { buttonVariants } from "./ui/button";
-import { Menu } from "lucide-react";
-import icon3 from '../assets/vexa.png';
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Logo } from "./Logo";
+import { useScrolledPast } from "@/lib/motion";
+import { scrollTo } from "@/lib/smoothScroll";
+import { cn } from "@/lib/utils";
 
-interface RouteProps {
-  href: string;
-  label: React.ReactNode;
-}
-
-const routeList: RouteProps[] = [
-  {
-    href: "#top",
-    label: "Hem",
-  },
-  {
-    href: "#what-we-do",
-    label: (
-      <>
-        Om&nbsp;
-        <span className="italic">VEXA</span>
-      </>
-    ),
-  },
-  {
-    href: "#deal-types",
-    label: "Sälja din fastighet",
-  },
-  {
-    href: "#portfolio",
-    label: "Portfölj",
-  },
-  {
-    href: "#apply",
-    label: "Kontakt",
-  },
+const links = [
+  { href: "#sa-fungerar-det", label: "Så fungerar det" },
+  { href: "#om-oss", label: "Om oss" },
+  { href: "#kontakt", label: "Kontakt" },
 ];
 
-export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isSellMenuOpen, setIsSellMenuOpen] = useState<boolean>(false);
-  const closeSellMenuTimeoutRef = useRef<number | null>(null);
-  const navigate = useNavigate();
+/**
+ * Sant när en mörk sektion ligger bakom navbarens mittlinje.
+ * Bygger på en tunn detektionsremsa istället för scroll-lyssnare.
+ */
+const useOnDarkSurface = () => {
+  const [onDark, setOnDark] = useState(false);
+  const location = useLocation();
 
-  const handleNavigation = (href: string) => {
-    if (window.location.pathname !== "/") {
-      navigate("/");
+  useEffect(() => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-surface="dark"]')
+    );
+
+    if (sections.length === 0) {
+      setOnDark(false);
+      return;
     }
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+
+    const active = new Set<Element>();
+    let observer: IntersectionObserver | null = null;
+
+    const connect = () => {
+      observer?.disconnect();
+
+      const line = 36;
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) active.add(entry.target);
+            else active.delete(entry.target);
+          }
+          setOnDark(active.size > 0);
+        },
+        {
+          rootMargin: `-${line}px 0px -${Math.max(
+            0,
+            window.innerHeight - line - 1
+          )}px 0px`,
+        }
+      );
+
+      for (const section of sections) observer.observe(section);
+    };
+
+    connect();
+    window.addEventListener("resize", connect);
+
+    return () => {
+      window.removeEventListener("resize", connect);
+      observer?.disconnect();
+    };
+  }, [location.pathname]);
+
+  return onDark;
+};
+
+export const Navbar = () => {
+  const scrolled = useScrolledPast(8);
+  const onDark = useOnDarkSurface();
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  const goTo = (href: string) => {
+    setOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      window.setTimeout(() => scrollTo(href), 80);
+      return;
+    }
+
+    scrollTo(href);
   };
 
+  const inverted = onDark || open;
+
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#EFE3E3]">
-      <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-20 px-4 w-screen flex justify-between items-center">
-          <NavigationMenuItem className="font-bold flex">
-            <a
-              href="/"
-              className="ml-0 text-xl flex text-black items-center"
-            >
-              <img src={icon3} alt="Vexa logotyp" className="h-12 mr-1 ml-6" />
-            </a>
-          </NavigationMenuItem>
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,color,backdrop-filter] duration-500 ease-vexa",
+          "backdrop-blur-md",
+          inverted ? "bg-ink/75 text-rosa" : "bg-rosa/75 text-ink"
+        )}
+      >
+        <div
+          className={cn(
+            "page relative z-10 flex items-center justify-between transition-all duration-500 ease-vexa",
+            scrolled ? "h-12 md:h-14" : "h-14 md:h-16"
+          )}
+        >
+          <a
+            href="/"
+            aria-label="VEXA, till startsidan"
+            onClick={(event) => {
+              event.preventDefault();
+              goTo("#top");
+            }}
+            className="relative z-10"
+          >
+            <Logo
+              className={cn(
+                "transition-all duration-500 ease-vexa",
+                scrolled ? "h-7 md:h-8" : "h-8 md:h-9"
+              )}
+            />
+          </a>
 
-          {/* mobile */}
-          <span className="flex md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="px-2 focus:outline-none">
-                <Menu
-                  className="flex md:hidden h-5 w-5 text-black"
-                  onClick={() => setIsOpen(true)}
-                >
-                  <span className="sr-only">Menu Icon</span>
-                </Menu>
-              </SheetTrigger>
-
-              <SheetContent side={"left"} className="bg-[#EFE3E3] text-black focus:outline-none">
-                <SheetHeader className="relative">
-                  <SheetTitle className="font-bold text-xl text-black">
-                    Vexa Industrihus
-                  </SheetTitle>
-                  <button
-                    className="absolute top-4 right-4 focus:outline-none"
-                    onClick={() => setIsOpen(false)}
-                    style={{ border: 'none', boxShadow: 'none' }}
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-10">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      goTo(link.href);
+                    }}
+                    className="group relative inline-block text-meta-lg uppercase"
                   >
-                    <span className="sr-only">Close</span>
-                  </button>
-                </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-4 mt-4">
-                  {routeList.map(({ href, label }: RouteProps, index: number) => (
-                    <a
-                      rel="noreferrer noopener"
-                      key={index}
-                      href={href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsOpen(false);
-                        handleNavigation(href);
-                      }}
-                      className={buttonVariants({ variant: "ghost", className: "text-black" })}
-                    >
-                      {label}
-                    </a>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </span>
-
-          {/* desktop */}
-          <nav className="hidden md:flex flex-1 justify-center gap-6" style={{ marginRight: '3%' }}>
-            {routeList.map((route: RouteProps, i) => {
-              const isSellRoute = route.href === "#deal-types";
-
-              const openSellMenu = () => {
-                if (closeSellMenuTimeoutRef.current) {
-                  window.clearTimeout(closeSellMenuTimeoutRef.current);
-                  closeSellMenuTimeoutRef.current = null;
-                }
-                setIsSellMenuOpen(true);
-              };
-
-              const closeSellMenuWithDelay = () => {
-                if (closeSellMenuTimeoutRef.current) {
-                  window.clearTimeout(closeSellMenuTimeoutRef.current);
-                }
-                closeSellMenuTimeoutRef.current = window.setTimeout(() => {
-                  setIsSellMenuOpen(false);
-                  closeSellMenuTimeoutRef.current = null;
-                }, 150);
-              };
-
-              if (isSellRoute) {
-                return (
-                  <div key={i} className="relative">
-                    <a
-                      rel="noreferrer noopener"
-                      href={route.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavigation(route.href);
-                      }}
-                      onMouseEnter={openSellMenu}
-                      onMouseLeave={closeSellMenuWithDelay}
-                      className={`text-[17px] ${buttonVariants({
-                        variant: "ghost",
-                        className: "text-black"
-                      })}`}
-                    >
-                      {route.label}
-                    </a>
-                    <div
-                      onMouseEnter={openSellMenu}
-                      onMouseLeave={closeSellMenuWithDelay}
-                      className={`absolute left-0 mt-2 ${
-                        isSellMenuOpen ? "block" : "hidden"
-                      } w-56 rounded-md bg-[#EFE3E3] shadow-lg ring-1 ring-black/5`}
-                    >
-                      <div className="py-2">
-                        <button
-                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
-                          onClick={() => handleNavigation("#deal-types")}
-                        >
-                          Typiska affärer
-                        </button>
-                        <button
-                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
-                          onClick={() => handleNavigation("#criteria")}
-                        >
-                          Vad vi letar efter
-                        </button>
-                        <button
-                          className="w-full px-4 py-2 text-left text-sm text-black hover:bg-black/5"
-                          onClick={() => handleNavigation("#process")}
-                        >
-                          Vår process
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-              return (
-                <a
-                  rel="noreferrer noopener"
-                  href={route.href}
-                  key={i}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavigation(route.href);
-                  }}
-                  className={`text-[17px] ${buttonVariants({
-                    variant: "ghost",
-                    className: "text-black"
-                  })}`}
-                >
-                  {route.label}
-                </a>
-              );
-            })}
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-500 ease-vexa group-hover:scale-x-100" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          <div className="hidden md:flex gap-4" />
-        </NavigationMenuList>
-      </NavigationMenu>
-    </header>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobil-meny"
+            onClick={() => setOpen((value) => !value)}
+            className="relative z-10 -mr-1 flex h-10 w-10 items-center justify-center md:hidden"
+          >
+            <span className="sr-only">{open ? "Stäng meny" : "Öppna meny"}</span>
+            <span aria-hidden className="relative block h-3 w-6">
+              <span
+                className={cn(
+                  "absolute left-0 block h-px w-full bg-current transition-all duration-300 ease-vexa",
+                  open ? "top-1.5 rotate-45" : "top-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute left-0 block h-px w-full bg-current transition-all duration-300 ease-vexa",
+                  open ? "top-1.5 -rotate-45" : "top-3"
+                )}
+              />
+            </span>
+          </button>
+        </div>
+
+        <span
+          aria-hidden
+          className={cn(
+            "relative z-10 block h-px w-full origin-left bg-current transition-transform duration-500 ease-vexa",
+            scrolled && !open ? "scale-x-100 opacity-15" : "scale-x-0 opacity-0"
+          )}
+        />
+
+        {/* Mjuk uttoning så fasaden tonar bort bakom menyn i stället för att kapas */}
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-x-0 top-full h-12 bg-gradient-to-b to-transparent",
+            inverted ? "from-ink/60" : "from-rosa/70"
+          )}
+        />
+      </header>
+
+      <div
+        id="mobil-meny"
+        hidden={!open}
+        className={cn(
+          "fixed inset-0 z-40 bg-ink text-rosa transition-opacity duration-500 ease-vexa md:hidden",
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+      >
+        <nav className="page flex h-full flex-col justify-end pb-[max(3rem,env(safe-area-inset-bottom))]">
+          <ul>
+            {links.map((link, index) => (
+              <li key={link.href} className="border-t border-rosa/15">
+                <a
+                  href={link.href}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    goTo(link.href);
+                  }}
+                  className="block py-5 text-display-3"
+                  style={{ transitionDelay: `${index * 60}ms` }}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-10 text-meta uppercase opacity-60">
+            info@vexa.se, +46 (0) 79 307 80 20
+          </p>
+        </nav>
+      </div>
+    </>
   );
 };

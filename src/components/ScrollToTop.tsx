@@ -1,38 +1,14 @@
-import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import { ArrowUpToLine } from "lucide-react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { scrollTo } from "@/lib/smoothScroll";
 
+/** Nollställer scrollpositionen vid ruttbyte, utan animerad hoppande scroll. */
 export const ScrollToTop = () => {
-  const [showTopBtn, setShowTopBtn] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
-      }
-    });
-  }, []);
+    scrollTo(0, true);
+  }, [pathname]);
 
-  const goToTop = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-    });
-  };
-
-  return (
-    <>
-      {showTopBtn && (
-        <Button
-          onClick={goToTop}
-          className="fixed bottom-4 right-4 bg-black text-white opacity-90 shadow-md hover:bg-black/80"
-          size="icon"
-        >
-          <ArrowUpToLine className="h-4 w-4" />
-        </Button>
-      )}
-    </>
-  );
+  return null;
 };
